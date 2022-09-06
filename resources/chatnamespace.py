@@ -6,8 +6,6 @@ from models.chat import ChatModel
 from datetime import datetime
 from pytz import timezone
 
-format_data = "%d/%m/%y %H:%M:%S.%f"
-
 class ChatNamespace(Namespace):
 
     def on_connect(self):
