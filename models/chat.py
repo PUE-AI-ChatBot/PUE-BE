@@ -2,7 +2,7 @@ from db import db
 from . import and_
 
 class ChatModel(db.Model):
-    __tablename__ = 'chats'
+    __tablename__ = 'statistics'
 
     id = db.Column(db.Integer, primary_key=True)
     date_YMD = db.Column(db.String(80)) #YYYYMMDD
