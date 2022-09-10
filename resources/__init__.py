@@ -5,7 +5,7 @@ main_ai = AIModel()
 def create_api(api):
     from .user import UserRegister, User, UserLogin
     from .chat import RangeChatList, AllChatList,YMDChatList,OneChat
-    from .oauth import GoogleCallback,KakaoCallback, GoogleOauth
+    from .oauth import GoogleCallback,KakaoCallback, GoogleOauth,KakaoOauth
 
     #belonged to chat
     api.add_resource(RangeChatList, '/chats/sday/<string:sdate>/eday/<string:edate>')
@@ -21,6 +21,7 @@ def create_api(api):
     #belonged to OAuth
     api.add_resource(GoogleOauth, '/oauth/google')
     api.add_resource(GoogleCallback, '/oauth/callback/google')
+    api.add_resource(KakaoOauth, '/oauth/kakao')
     api.add_resource(KakaoCallback,'/oauth/callback/kakao')
 
 
