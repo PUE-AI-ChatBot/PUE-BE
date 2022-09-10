@@ -4,6 +4,7 @@ class UserModel(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
+
     user_subname = db.Column(db.String(80))
     password = db.Column(db.String(80))
     user_name = db.Column(db.String(80))
@@ -14,7 +15,7 @@ class UserModel(db.Model):
     chats = db.relationship('ChatModel', backref='users')
     statistics = db.relationship('StatisticModel', backref='users')
 
-    def __init__(self, user_subname,user_name=None,password=None,provider=None,pid=None):
+    def __init__(self, user_subname,user_name="",password="",provider="",pid=""):
         self.user_subname = user_subname
         self.user_name = user_name
         self.password = password
@@ -22,7 +23,7 @@ class UserModel(db.Model):
         self.pid = pid
 
     def json(self):
-        return {"info":{'id':self.id,  'user_name':self.username,'user_subname':self.user_subname},"chats":[chat.json() for chat in self.chats]}
+        return {"info":{'id':self.id,  'user_name':self.user_name,'user_subname':self.user_subname,'provider':self.provider},"chats":[chat.json() for chat in self.chats]}
 
     def save_to_db(self):
         db.session.add(self)
