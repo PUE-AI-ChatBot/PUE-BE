@@ -9,8 +9,8 @@ from resources import create_api, create_socketio
 from configure import app
 from db import db
 
-host = "127.0.0.1"
-port = 5000
+host = "192.168.0.102"
+port = 5001
 
 app.secret_key = "chan"
 db_name = "pue"
@@ -25,9 +25,17 @@ app.config['GOOGLE_CLIENT_KEY'] = "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"
 app.config['GOOGLE_OAUTH_ENDPOINT'] = "https://accounts.google.com/o/oauth2/auth"
 app.config['GOOGLE_TOKEN_ENDPOINT']="https://oauth2.googleapis.com/token"
 app.config['GOOGLE_REDIRECT_URI'] = f"http://{host}:{port}/oauth/callback/google"
-app.config['GOOGLE_AUTH_URL']= "https://www.googleapis.com/userinfo/v2/me?access_token="
+app.config['GOOGLE_AUTH_URL']= "https://www.googleapis.com/userinfo/v2/me"
 app.config['GOOGLE_SCOPES'] = "email profile"
 
+#KAKAO_OAUTH
+app.config['KAKAO_CLIENT_ID'] = "f0af74e24a928840538f00331e5d3317"
+app.config['KAKAO_CLIENT_KEY'] = "IlswqcO2pIMCguIROJ67suFTkhBi8bOg"
+app.config['KAKAO_OAUTH_ENDPOINT'] = "https://kauth.kakao.com/oauth/authorize"
+app.config['KAKAO_TOKEN_ENDPOINT']="https://kauth.kakao.com/oauth/token"
+app.config['KAKAO_REDIRECT_URI'] = f"http://{host}:{port}/oauth/callback/kakao"
+app.config['KAKAO_AUTH_URL']= "https://kapi.kakao.com/v2/user/me"
+app.config['KAKAO_SCOPES'] = "account_email profile_nickname"
 
 #SECRET_KEY = config['DEFAULT']['SECRET_KEY']
 #db_name = config['DEFAULT']['DB_NAME']+'.db'
