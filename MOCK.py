@@ -1,6 +1,7 @@
 from models.user import UserModel
 from models.chat import ChatModel
 from models.statistic import StatisticModel
+import json
 
 def make_dummy():
     user = UserModel(
@@ -63,3 +64,30 @@ def make_dummy():
         utterance="네, 좋은 밤 되세요."
     )
     chat.save_to_db()
+
+    stat = StatisticModel(
+        date_YMD="20220906",
+        user_id=user.id
+    )
+    temp = json.loads(stat.emotions)
+    temp["중립"]+=1
+    stat.emotions = json.dumps(temp)
+    stat.save_to_db()
+
+    stat = StatisticModel(
+        date_YMD="20220908",
+        user_id=user.id
+    )
+    temp = json.loads(stat.emotions)
+    temp["슬픔"] += 1
+    stat.emotions = json.dumps(temp)
+    stat.save_to_db()
+
+    stat = StatisticModel(
+        date_YMD="20220910",
+        user_id=user.id
+    )
+    temp = json.loads(stat.emotions)
+    temp["기쁨"] += 1
+    stat.emotions = json.dumps(temp)
+    stat.save_to_db()

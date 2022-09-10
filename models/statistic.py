@@ -7,26 +7,21 @@ init_emotion={
 }
 
 class StatisticModel(db.Model):
-    __tablename__ = 'statistics'
+    __tablename__ = 'charts'
     id = db.Column(db.Integer, primary_key=True)
-    mtype = db.Column(db.String(80)) #0-day, 1-week 2-month, 3-year
-    start_date = db.Column(db.String(80))
-    end_date = db.Column(db.String(80))#day - YYYY-MM-DD ,week - YYYY-MM-DD(start), month - YYYY-MM , year - YYYY
+    date_YMD = db.Column(db.String(80))
     emotions = db.Column(db.String(80))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def __init__(self, mtype,start_date,end_date,user_id):
-        self.mtype = mtype
-        self.start_date = start_date
-        self.end_date = end_date
-        self.emotions = json.dumps(init_emotion)
+    def __init__(self, date_YMD,user_id):
+        self.date_YMD = date_YMD
+        self.emotions = json.dumps(init_emotion.copy())
 
         self.user_id = user_id
 
     def json(self):
-        return {'info':{'type': self.type, 'start_date': self.start_date,'end_date':self.end_date},
-                'emotions': json.loads(self.emotions)}
+        return {'emotions': json.loads(self.emotions)}
 
     #1. day인 경우, month를 받으면 해당월에 관련된 모든 day 통계 표출
     #2. day인 경우, start와 end를 받으면 해당 기간에 관련된 모든 day 통계 표출
@@ -37,7 +32,7 @@ class StatisticModel(db.Model):
 
     @classmethod
     def find_by_id(cls, id):
-        return cls.query.filter_by(id=id).first()
+        return cls.query.filter_by(id=id).all()
 
     @classmethod
     def find_by_user_id(cls, user_id):
@@ -45,9 +40,19 @@ class StatisticModel(db.Model):
 
     ##week, day는 시작 날짜, 양식은 YYYYMMDD
     ##month면 start_date 양식은 YYYYMM
+
     @classmethod
-    def find_by_user_id_and_type_and_sdate(cls, user_id,mtype,start_date):
-        return cls.query.filter(and_(cls.mtype == mtype, cls.user_id == user_id, cls.start_date == start_date)).all()
+    def find_by_dateYMD_with_user_id(cls, user_id, date):
+        return cls.query.filter(and_(cls.user_id == user_id, cls.date_YMD == date)).first()
+
+    @classmethod
+    def find_range_with_user_id(cls, user_id, begin, latest):
+        return cls.query.filter(and_(cls.date_YMD.between(begin, latest), cls.user_id == user_id)).all()
+
+    @classmethod
+    def find_by_number_with_user_id(cls, user_id, latest, number):
+        return cls.query.filter(and_(cls.date_YMD < latest, cls.user_id == user_id)).order_by(cls.id.desc()).limit(
+            number).all()
 
     def save_to_db(self):
         db.session.add(self)
