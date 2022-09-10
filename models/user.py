@@ -8,13 +8,18 @@ class UserModel(db.Model):
     password = db.Column(db.String(80))
     user_name = db.Column(db.String(80))
 
+    provider = db.Column(db.String(80))
+    pid = db.Column(db.String(80))
+
     chats = db.relationship('ChatModel', backref='users')
     statistics = db.relationship('StatisticModel', backref='users')
 
-    def __init__(self, user_name,user_subname,password):
+    def __init__(self, user_subname,user_name=None,password=None,provider=None,pid=None):
         self.user_subname = user_subname
         self.user_name = user_name
         self.password = password
+        self.provider = provider
+        self.pid = pid
 
     def json(self):
         return {"info":{'id':self.id,  'user_name':self.username,'user_subname':self.user_subname},"chats":[chat.json() for chat in self.chats]}
