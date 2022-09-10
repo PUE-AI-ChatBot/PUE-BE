@@ -2,7 +2,7 @@ from db import db
 from . import and_
 
 class ChatModel(db.Model):
-    __tablename__ = 'chats'
+    __tablename__ = 'statistics'
 
     id = db.Column(db.Integer, primary_key=True)
     date_YMD = db.Column(db.String(80)) #YYYYMMDD
@@ -21,7 +21,7 @@ class ChatModel(db.Model):
         self.user_id = user_id
 
     def json(self):
-        return {'date': self.date_YMDHMS, 'direction': self.direction,'utterance':self.utterance}
+        return {'day': self.date_YMD,'time':self.date_YMDHMS[8:], 'direction': self.direction,'utterance':self.utterance}
 
     @classmethod
     def find_by_fulldate_with_user_id(cls, user_id, date):
@@ -29,11 +29,19 @@ class ChatModel(db.Model):
 
     @classmethod
     def find_all_by_dateYMD_with_user_id(cls, user_id, date):
-        return cls.query.filter(and_(cls.user_id == user_id, cls.date_YMD == date)).all()
+        return cls.query.filter(and_(cls.user_id == user_id, cls.date_YMD == date)).order_by(cls.id.desc()).all()
+
+    @classmethod
+    def find_range_with_user_id(cls, user_id, begin, latest):
+        return cls.query.filter(and_(cls.date_YMD.between(begin,latest),cls.user_id == user_id)).order_by(cls.id.desc()).all()
+
+    @classmethod
+    def find_by_number_with_user_id(cls, user_id, latest,number):
+        return cls.query.filter(and_(cls.date_YMDHMS < latest, cls.user_id == user_id)).order_by(cls.id.desc()).limit(number).all()
 
     @classmethod
     def find_all_by_user_id(cls,user_id):
-        return cls.query.filter_by(user_id=user_id).all()
+        return cls.query.filter_by(user_id=user_id).order_by(cls.id.desc()).all()
 
     def save_to_db(self):
         db.session.add(self)
