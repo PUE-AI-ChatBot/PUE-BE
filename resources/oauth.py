@@ -73,7 +73,7 @@ class GoogleCallback(Resource):
                        'access_token': access_token,
                        'refresh_token': refresh_token,
                        'user_id': user.id,
-                        'message':"New user has registered!."
+                        'message':"New user has registered!"
                    }, 200
 
 class KakaoOauth(Resource):
@@ -141,5 +141,5 @@ class KakaoCallback(Resource):
                        'access_token': access_token,
                        'refresh_token': refresh_token,
                        'user_id': user.id,
-                       'message': "New user has registered!."
+                       'message': "New user has registered!"
                    }, 200
