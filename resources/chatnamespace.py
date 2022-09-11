@@ -41,7 +41,6 @@ class ChatNamespace(Namespace):
 
         user = UserModel.find_by_id(self.user_id)
 
-        print(user.cursor)
         if user.cursor :
             if self.scenario_processor(user,data['message']) :
                 self.value_container = {'name':user.user_subname}
@@ -74,7 +73,7 @@ class ChatNamespace(Namespace):
                 date_YMD=now[:8],
                 date_YMDHMS=now,
                 direction='BOT',
-                utterance=text
+                utterance=text.format(*real_keys)
             )
             chat.save_to_db()
 
