@@ -9,7 +9,6 @@ from .MOCK import mocks
 import time
 
 class ChatNamespace(Namespace):
-
     def on_connect(self):
         print("Client connected",)
         self.user_id = 1
@@ -34,7 +33,7 @@ class ChatNamespace(Namespace):
         chat = ChatModel(
             user_id=self.user_id,
             date_YMD=now[:8],
-            date_YMDHMS=now[8:],
+            date_YMDHMS=now,
             direction='USER',
             utterance=data['message']
         )
@@ -73,7 +72,7 @@ class ChatNamespace(Namespace):
             chat = ChatModel(
                 user_id=user.id,
                 date_YMD=now[:8],
-                date_YMDHMS=now[8:],
+                date_YMDHMS=now,
                 direction='BOT',
                 utterance=text
             )
