@@ -1,3 +1,5 @@
+import json
+
 from db import db
 from models import and_
 
@@ -13,6 +15,8 @@ class UserModel(db.Model):
     provider = db.Column(db.String(80))
     pid = db.Column(db.String(80))
     cursor = db.Column(db.String(80))
+    value_container = db.Column(db.String(80))
+    res_controller = db.Column(db.String(80))
 
     chats = db.relationship('ChatModel', backref='users')
     statistics = db.relationship('StatisticModel', backref='users')
@@ -23,10 +27,19 @@ class UserModel(db.Model):
         self.password = password
         self.provider = provider
         self.pid = pid
+        self.value_container = json.dumps({"name": user_subname})
+        self.res_controller = None
         self.cursor = None
 
     def json(self):
-        return {"info":{'id':self.id,  'user_name':self.user_name,'user_subname':self.user_subname,'provider':self.provider},"chats":[chat.json() for chat in self.chats]}
+        return {
+            "info":{
+                'id':self.id,
+                'user_name':self.user_name,
+                'user_subname':self.user_subname,
+                'provider':self.provider
+            },
+            "chats":[chat.json() for chat in self.chats]}
 
     def save_to_db(self):
         db.session.add(self)

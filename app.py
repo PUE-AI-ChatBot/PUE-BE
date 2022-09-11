@@ -49,7 +49,7 @@ app.config['KAKAO_SCOPES'] = "account_email profile_nickname"
 #3. Flask-JWT
 
 api = Api(app) #API FLASK SERVER
-CORS(app)
+#CORS(app)
 
 sock = SocketIO(app,cors_allowed_origins="*")
 

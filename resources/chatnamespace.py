@@ -6,19 +6,15 @@ from models.chat import ChatModel
 from datetime import datetime
 from pytz import timezone
 from .MOCK import mocks
-import time
+import time,json
 
 class ChatNamespace(Namespace):
     def on_connect(self):
-        print("Client connected",)
+        print("Client connected")
         self.user_id = 1
-        user = UserModel.find_by_id(self.user_id)
-        self.value_container = {'name' : user.user_subname}
-        self.res_controller = None
-        #sessioned= session.get()
 
     def on_disconnect(self):
-        print("Client disconnected", )
+        print("Client disconnected")
         #sessioned = session.get()
 
     def on_SEND_MESSAGE(self,data):
@@ -40,7 +36,7 @@ class ChatNamespace(Namespace):
 
         if user.cursor :
             if self.scenario_processor(user,data['message']) :
-                self.value_container = {'name':user.user_subname}
+                user.value_container = json.dumps({'name':user.user_subname})
         else :
             processed_data = main_ai.run("Hello", data['message'])
             if processed_data["Emotion"] in ['걱정']:
@@ -55,13 +51,16 @@ class ChatNamespace(Namespace):
     def scenario_processor(self,user, res):
         data = mocks[user.cursor]
         setups = data['setup']
-        if self.res_controller:
-            self.value_container[self.res_controller] = res
+
+        value_container = json.loads(user.value_container)
+
+        if user.res_controller:
+            value_container[user.res_controller] = res
 
         for text, keys in zip(data['text'], setups['keys']):
             time.sleep(setups['timer'])
             now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
-            real_keys = [self.value_container[key] if (key in self.value_container.keys()) else key for key in keys]
+            real_keys = [value_container[key] if (key in value_container.keys()) else key for key in keys]
 
             self.emit("RECEIVE_MESSAGE", {"response": text.format(*real_keys), "day": now[:8], 'time': now[8:]})
 
@@ -77,15 +76,17 @@ class ChatNamespace(Namespace):
         if setups['is_response']:
             res_setup = data['response']
             if res_setup["is_store"]:
-                self.res_controller = res_setup['store_key']
+                user.res_controller = res_setup['store_key']
             else:
-                self.res_controller = None
+                user.res_controller = None
         else:
-            self.res_controller = None
+            user.res_controller = None
 
         user.cursor = setups['next']
+        user.value_container = json.dumps(value_container)
         user.save_to_db()
 
         if setups["is_last"]:
             return False
+
         return True

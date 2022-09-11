@@ -150,9 +150,6 @@ def GC_predict(sentence, model, tokenizer):
     predicted_sentence = tokenizer.decode(
         [i for i in prediction if (i < tokenizer.vocab_size) and (i != 2)])
 
-    print('Input: {}'.format(sentence))
-    print('Output: {}'.format(predicted_sentence))
-
     return predicted_sentence
 
 def make_datasets_for_prediction(sentence, model, tokenizer):
