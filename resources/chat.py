@@ -3,9 +3,8 @@ from models.chat import ChatModel
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 class NumberChatList(Resource):
-    @jwt_required()
     def get(self,date, number):
-        user_id = get_jwt_identity()
+        user_id = 1
         chats = [chat.json() for chat in ChatModel.find_by_number_with_user_id(user_id,date,number)]
         if not chats :
             return {"message":"None"},400
@@ -13,9 +12,8 @@ class NumberChatList(Resource):
         return {'chats': chats}, 200
 
 class RangeChatList(Resource):
-    @jwt_required()
     def get(self,end,begin):
-        user_id = get_jwt_identity()
+        user_id = 1
         chats = [chat.json() for chat in ChatModel.find_range_with_user_id(user_id, begin,end)]
 
         if not chats :
@@ -24,9 +22,8 @@ class RangeChatList(Resource):
         return {'chats': chats}, 200
 
 class YMDChatList(Resource):
-    @jwt_required()
     def get(self,day):
-        user_id = get_jwt_identity()
+        user_id = 1
         chats = [chat.json() for chat in ChatModel.find_all_by_dateYMD_with_user_id(user_id,day)]
         if not chats :
             return {"message":"None"},400
@@ -34,9 +31,8 @@ class YMDChatList(Resource):
         return {'chats': chats},200
 
 class AllChatList(Resource):
-    @jwt_required()
     def get(self):
-        user_id = get_jwt_identity()
+        user_id = 1
         chats = [chat.json() for chat in ChatModel.find_all_by_user_id(user_id)]
         if not chats :
             return {"message":"None"},400
@@ -61,9 +57,8 @@ class OneChat(Resource):
                         help="Field named 'emotion' cannot be blank."
                         )
 
-    @jwt_required()
     def post(self,date):
-        user_id = get_jwt_identity()
+        user_id = 1
 
         data = OneChat.parser.parse_args()
 
@@ -76,9 +71,9 @@ class OneChat(Resource):
 
         return chat.json(), 201
 
-    @jwt_required()
+
     def delete(self, date):
-        user_id = get_jwt_identity()
+        user_id = 1
         chat = ChatModel.find_by_fulldate_with_user_id(user_id,date)
         if chat:
             chat.delete_from_db()

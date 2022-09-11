@@ -18,14 +18,15 @@ db_name = "pue"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+db_name
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['SERVER_HOST'] = "133.186.215.54"
+app.config['SERVER_HOST'] = "localhost:3000"
 
 #GOOGLE_OAUTH
 app.config['GOOGLE_CLIENT_ID'] = "14896673180-u6cbabk7l3dt6gcrlb6egnch25s2l90h.apps.googleusercontent.com"
 app.config['GOOGLE_CLIENT_KEY'] = "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"
 app.config['GOOGLE_OAUTH_ENDPOINT'] = "https://accounts.google.com/o/oauth2/auth"
 app.config['GOOGLE_TOKEN_ENDPOINT']="https://oauth2.googleapis.com/token"
-app.config['GOOGLE_REDIRECT_URI'] = f"http://localhost:3000/oauth/callback/google"
+app.config['GOOGLE_REDIRECT_URI'] = f"http://{app.config['SERVER_HOST']}/oauth/callback/google"
+#app.config['GOOGLE_REDIRECT_URI'] = f"http://localhost:5001/login/google"
 app.config['GOOGLE_AUTH_URL']= "https://www.googleapis.com/userinfo/v2/me"
 app.config['GOOGLE_SCOPES'] = "email profile"
 
@@ -34,7 +35,8 @@ app.config['KAKAO_CLIENT_ID'] = "f0af74e24a928840538f00331e5d3317"
 app.config['KAKAO_CLIENT_KEY'] = "IlswqcO2pIMCguIROJ67suFTkhBi8bOg"
 app.config['KAKAO_OAUTH_ENDPOINT'] = "https://kauth.kakao.com/oauth/authorize"
 app.config['KAKAO_TOKEN_ENDPOINT']="https://kauth.kakao.com/oauth/token"
-app.config['KAKAO_REDIRECT_URI'] = f"http://localhost:3000/oauth/callback/kakao"
+app.config['KAKAO_REDIRECT_URI'] = f"http://{app.config['SERVER_HOST']}/oauth/callback/kakao"
+#app.config['KAKAO_REDIRECT_URI'] = f"http://localhost:5001/login/kakao"
 app.config['KAKAO_AUTH_URL']= "https://kapi.kakao.com/v2/user/me"
 app.config['KAKAO_SCOPES'] = "account_email profile_nickname"
 

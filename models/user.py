@@ -1,4 +1,5 @@
 from db import db
+from models import and_
 
 class UserModel(db.Model):
     __tablename__ = 'users'
@@ -40,3 +41,7 @@ class UserModel(db.Model):
     @classmethod
     def find_by_id(cls, _id):
         return cls.query.filter_by(id=_id).first()
+
+    @classmethod
+    def find_oauth_by_id(cls, id,oauth):
+        return cls.query.filter(and_(cls.pid == id,cls.provider == oauth)).first()

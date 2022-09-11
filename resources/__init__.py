@@ -6,7 +6,7 @@ def create_api(api):
     from .user import UserRegister, User, UserLogin
     from .chat import RangeChatList, AllChatList,YMDChatList,OneChat,NumberChatList
     from .statistic import RangeStatList, AllStatList, YMDStatList, NumberStatList
-    from .oauth import GoogleCallback,KakaoCallback, GoogleOauth,KakaoOauth
+    from .oauth import GoogleLogin,KakaoLogin, GoogleOauth,KakaoOauth
     from .develop import MakeMock
 
     #dev
@@ -32,12 +32,9 @@ def create_api(api):
 
     #belonged to OAuth
     api.add_resource(GoogleOauth, '/oauth/google')
-    api.add_resource(GoogleCallback, '/oauth/callback/google')
+    api.add_resource(GoogleLogin, '/login/google')
     api.add_resource(KakaoOauth, '/oauth/kakao')
-    api.add_resource(KakaoCallback,'/oauth/callback/kakao')
-
-
-
+    api.add_resource(KakaoLogin,'/login/kakao')
 
 
 def create_socketio(sock):

@@ -5,10 +5,9 @@ import json
 from datetime import datetime, timedelta
 
 class NumberStatList(Resource):
-    @jwt_required()
     def get(self,date, number):
 
-        user_id = get_jwt_identity()
+        user_id = 1
         total_cnt=0
 
         end = datetime.strptime(date, '%Y%m%d')
@@ -29,9 +28,8 @@ class NumberStatList(Resource):
         return {'total':total_cnt,'statistics': ret_emotions}, 200
 
 class RangeStatList(Resource):
-    @jwt_required()
     def get(self,end,begin):
-        user_id = get_jwt_identity()
+        user_id = 1
         total_cnt = 0
 
         ret_emotions = init_emotion.copy()
@@ -49,9 +47,8 @@ class RangeStatList(Resource):
         return {'total':total_cnt,'statistics': ret_emotions}, 200
 
 class YMDStatList(Resource):
-    @jwt_required()
     def get(self,day):
-        user_id = get_jwt_identity()
+        user_id = 1
 
         total_cnt=0
         stat = StatisticModel.find_by_dateYMD_with_user_id(user_id,day)
@@ -67,9 +64,8 @@ class YMDStatList(Resource):
         return {'total':total_cnt,'statistics': temp},200
 
 class AllStatList(Resource):
-    @jwt_required()
     def get(self):
-        user_id = get_jwt_identity()
+        user_id = 1
 
         total_cnt = 0
         ret_emotions = init_emotion.copy()

@@ -1,4 +1,4 @@
-from MOCK import make_dummy
+from .MOCK import make_dummy
 from flask_restful import Resource, reqparse, request
 
 class MakeMock(Resource):

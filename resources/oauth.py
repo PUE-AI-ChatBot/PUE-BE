@@ -27,54 +27,50 @@ class GoogleOauth(Resource):
         authorize_redirect = f'{authorize_endpoint}?{query_string}'
         return redirect(authorize_redirect)
 
-class GoogleCallback(Resource):
-    def get(self):
+class GoogleLogin(Resource):
+    _user_parser = reqparse.RequestParser()
+    _user_parser.add_argument('email',
+                              type=str,
+                              required=True,
+                              help="Field named 'email' cannot be blank."
+                              )
+    _user_parser.add_argument('name',
+                              type=str,
+                              required=True,
+                              help="Field named 'name' cannot be blank."
+                              )
+    _user_parser.add_argument('id',
+                              type=str,
+                              required=True,
+                              help="Field named 'id' cannot be blank."
+                              )
 
-        code = request.args.get('code')
-        token_endpoint = app.config.get('GOOGLE_TOKEN_ENDPOINT')
-        client_id = app.config.get('GOOGLE_CLIENT_ID')
-        client_secret = app.config.get('GOOGLE_CLIENT_KEY')
-        redirect_uri = app.config.get('GOOGLE_REDIRECT_URI')
-        grant_type = 'authorization_code'
+    def post(self):
+        data = GoogleLogin._user_parser.parse_args()
+        user = UserModel.find_oauth_by_id(data['id'],'google')
 
-        res = requests.post(token_endpoint, data=dict(
-            code=code,
-            client_id=client_id,
-            client_secret=client_secret,
-            redirect_uri=redirect_uri,
-            grant_type=grant_type
-        )).json()
+        if not user :
+            user = UserModel.find_by_username(data['email'])
+            if not user :
+                user = UserModel(
+                    user_subname=data['name'],
+                    user_name=data['email'],
+                    provider='google',
+                    pid=data['id']
+                )
+                user.save_to_db()
+            else :
+                user.provider = 'google'
+                user.pid = data['id']
 
-        token_response = requests.get(
-            app.config['GOOGLE_AUTH_URL'],
-            headers={"Authorization":"Bearer " + res['access_token']},
-        )
+        access_token = create_access_token(identity=user.id, fresh=True)
+        refresh_token = create_refresh_token(user.id)
+        return {
+                   'access_token': access_token,
+                   'refresh_token': refresh_token,
+                   'user_id': user.id
+               }, 200
 
-        if token_response.status_code != 200 :
-            return {'message': "Cannot login with google..."},400
-
-        data = token_response.json()
-        user = UserModel.find_by_username(data['email'])
-        if user :
-            access_token = create_access_token(identity=user.id, fresh=True)
-            refresh_token = create_refresh_token(user.id)
-            return {
-                       'access_token': access_token,
-                       'refresh_token': refresh_token,
-                       'user_id': user.id,
-                   }, 200
-        else :
-            user = UserModel(user_name=data['email'],user_subname=data['name'],provider="google",pid=data['id'])
-            user.save_to_db()
-
-            access_token = create_access_token(identity=user.id, fresh=True)
-            refresh_token = create_refresh_token(user.id)
-            return {
-                       'access_token': access_token,
-                       'refresh_token': refresh_token,
-                       'user_id': user.id,
-                        'message':"New user has registered!"
-                   }, 200
 
 class KakaoOauth(Resource):
 
@@ -96,50 +92,46 @@ class KakaoOauth(Resource):
         return redirect(authorize_redirect)
 
 
-class KakaoCallback(Resource):
-    def get(self):
+class KakaoLogin(Resource):
+    _user_parser = reqparse.RequestParser()
+    _user_parser.add_argument('email',
+                              type=str,
+                              required=True,
+                              help="Field named 'email' cannot be blank."
+                              )
+    _user_parser.add_argument('nickname',
+                              type=str,
+                              required=True,
+                              help="Field named 'name' cannot be blank."
+                              )
+    _user_parser.add_argument('id',
+                              type=str,
+                              required=True,
+                              help="Field named 'id' cannot be blank."
+                              )
 
-        code = request.args.get('code')
-        token_endpoint = app.config.get('KAKAO_TOKEN_ENDPOINT')
-        client_id = app.config.get('KAKAO_CLIENT_ID')
-        client_secret = app.config.get('KAKAO_CLIENT_KEY')
-        redirect_uri = app.config.get('KAKAO_REDIRECT_URI')
-        grant_type = 'authorization_code'
+    def post(self):
+        data = KakaoLogin._user_parser.parse_args()
+        user = UserModel.find_oauth_by_id(data['id'], 'kakao')
 
-        res = requests.post(token_endpoint, data=dict(
-            code=code,
-            client_id=client_id,
-            client_secret=client_secret,
-            redirect_uri=redirect_uri,
-            grant_type=grant_type
-        )).json()
+        if not user:
+            user = UserModel.find_by_username(data['email'])
+            if not user:
+                user = UserModel(
+                    user_subname=data['nickname'],
+                    user_name=data['email'],
+                    provider='kakao',
+                    pid=data['id']
+                )
+                user.save_to_db()
+            else :
+                user.provider = 'kakao'
+                user.pid = data['id']
 
-        token_response = requests.get(
-            app.config['KAKAO_AUTH_URL'],
-            headers={"Authorization": "Bearer " + res['access_token']},
-        )
-        if token_response.status_code != 200:
-            return {'message': "Cannot login with kakao..."}, 400
-
-        data = token_response.json()
-        user = UserModel.find_by_username(data['kakao_account']['email'])
-        if user:
-            access_token = create_access_token(identity=user.id, fresh=True)
-            refresh_token = create_refresh_token(user.id)
-            return {
-                       'access_token': access_token,
-                       'refresh_token': refresh_token,
-                       'user_id': user.id,
-                   }, 200
-        else:
-            user = UserModel(user_name=data['kakao_account']['email'], user_subname=data['kakao_account']['profile']['nickname'], provider="kakao", pid=data['id'])
-            user.save_to_db()
-
-            access_token = create_access_token(identity=user.id, fresh=True)
-            refresh_token = create_refresh_token(user.id)
-            return {
-                       'access_token': access_token,
-                       'refresh_token': refresh_token,
-                       'user_id': user.id,
-                       'message': "New user has registered!"
-                   }, 200
+        access_token = create_access_token(identity=user.id, fresh=True)
+        refresh_token = create_refresh_token(user.id)
+        return {
+                   'access_token': access_token,
+                   'refresh_token': refresh_token,
+                   'user_id': user.id
+               }, 200
