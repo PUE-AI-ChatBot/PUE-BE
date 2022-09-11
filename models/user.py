@@ -23,7 +23,7 @@ class UserModel(db.Model):
         self.password = password
         self.provider = provider
         self.pid = pid
-        self.cursor = ""
+        self.cursor = None
 
     def json(self):
         return {"info":{'id':self.id,  'user_name':self.user_name,'user_subname':self.user_subname,'provider':self.provider},"chats":[chat.json() for chat in self.chats]}

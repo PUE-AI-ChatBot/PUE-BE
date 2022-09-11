@@ -92,12 +92,6 @@ def make_dummy():
     stat.emotions = json.dumps(temp)
     stat.save_to_db()
 
-def scenario_processor(user,cursor,self):
-    data = mocks[cursor]
-    setups = data['setup']
-
-
-
 
 mocks = {
     '1':{
@@ -106,11 +100,14 @@ mocks = {
             "keys":[['name']],
             "timer":1,
             "is_continue":False,
-            "is_respone":True,
+            "is_response":True,
+            'is_last':False,
             "next":'2'
         },
-        "text":["{0}님이 느끼시는 감정의 이유에 대하여 좀 더 자세한 설명이 가능할까요?"],
-        "respone":{
+        "text":[
+            "{0}님이 느끼시는 감정의 이유에 대하여 좀 더 자세한 설명이 가능할까요?"
+        ],
+        "response":{
             "type":"input",
             "is_store":True,
             "is_redirection":False,
@@ -124,6 +121,7 @@ mocks = {
             "timer":2,
             "is_continue":False,
             "is_response":True,
+            'is_last':False,
             "next": '3'
         },
         "text":[
@@ -133,7 +131,7 @@ mocks = {
             "다음 중에서 골라주실래요?",
             "{0} {1} {2} {3}"
         ],
-        "respone":{
+        "response":{
             "next":'input',
             "is_store":False,
             "is_redirection":False,
@@ -144,9 +142,10 @@ mocks = {
         "setup":{
             "length":3,
             "keys":[['name'],[],[]],
-            "timer":2,
+            "timer":3,
             "is_continue": False,
             "is_response": True,
+            'is_last':False,
             "next": '4'
         },
         "text":[
@@ -155,7 +154,7 @@ mocks = {
             "(자신이 생각하는 해결 방법을 적어주세요)"
                ],
 
-        "respone":{
+        "response":{
             "next":'input',
             "is_store":False,
             "is_redirection":False,
@@ -167,15 +166,16 @@ mocks = {
             "length":1,
             "keys":[[]],
             "next":'5',
-            "timer":1,
+            "timer":3,
             "is_continue": False,
+            'is_last':False,
             "is_response": True,
         },
         "text":[
             "좋아요, 그럼 그 방법의 장단점은요?"
                ],
 
-        "respone":{
+        "response":{
             "next":'input',
             "is_store":False,
             "is_redirection":False,
@@ -186,16 +186,17 @@ mocks = {
         "setup":{
             "length":1,
             "keys":[[]],
-            "timer":1,
+            "timer":3,
             "is_continue": False,
             "is_response": True,
+            'is_last':False,
             "next": '6'
         },
         "text":[
             "언제 실행하는 것이 가장 좋을까요?"
                ],
 
-        "respone":{
+        "response":{
             "next":'input',
             "is_store":False,
             "is_redirection":False,
@@ -205,21 +206,16 @@ mocks = {
     '6':{
         "setup":{
             "length":2,
-            "keys":[[]],
-            "timer": 2,
+            "keys":[[],[]],
+            "timer": 3,
+            'is_last':True,
             "is_continue": False,
-            "is_response": True,
+            "is_response": False,
             "next": None
         },
         "text":[
             "좋아요! 지금 세워본 방법이 실제로 도움이 되지 않더라도 이렇게 정리하는 것 만으로도 문제를 이해하고 해결하는데 큰 도움이 되죠!!",
             "마지막으로 이 말을 전해요! 사라져라 지겨운 걱정들아..!! -빨간 머리 앤-"
-               ],
-        "respone":{
-            "next":'input',
-            "is_store":False,
-            "is_redirection":False,
-            "store_key":None
-        }
+               ]
     }
 }
