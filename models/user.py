@@ -12,6 +12,7 @@ class UserModel(db.Model):
 
     provider = db.Column(db.String(80))
     pid = db.Column(db.String(80))
+    cursor = db.Column(db.String(80))
 
     chats = db.relationship('ChatModel', backref='users')
     statistics = db.relationship('StatisticModel', backref='users')
@@ -22,6 +23,7 @@ class UserModel(db.Model):
         self.password = password
         self.provider = provider
         self.pid = pid
+        self.cursor = ""
 
     def json(self):
         return {"info":{'id':self.id,  'user_name':self.user_name,'user_subname':self.user_subname,'provider':self.provider},"chats":[chat.json() for chat in self.chats]}

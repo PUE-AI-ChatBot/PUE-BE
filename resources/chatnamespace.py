@@ -10,6 +10,7 @@ class ChatNamespace(Namespace):
 
     def on_connect(self):
         print("Client connected",)
+        self.user_id = 1
         #sessioned= session.get()
 
     def on_disconnect(self):
@@ -25,4 +26,4 @@ class ChatNamespace(Namespace):
 
         now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
 
-        emit("RECEIVE_MESSAGE", {"response": processed_data["System_Corpus"],"day":now[:8],'time':now[8:]})
+        self.emit("RECEIVE_MESSAGE", {"response": processed_data["System_Corpus"],"day":now[:8],'time':now[8:]})

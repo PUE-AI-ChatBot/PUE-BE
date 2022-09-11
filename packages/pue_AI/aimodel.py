@@ -40,8 +40,14 @@ class AIModel:
         Data["Name"] = name
         Data["Input_Corpus"] = inputsentence
         Data["NER"] = NER
+
         Data["Emotion"] = EmoOut
-        Data["Type"] = "General"
+
+        if EmoOut in ("중립","기쁨"):
+            Data["Type"] = "General"
+        else :
+            Data["Type"] = EmoOut
+
         Data["System_Corpus"] = GeneralAnswer
 
         return Data
