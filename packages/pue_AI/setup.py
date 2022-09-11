@@ -64,10 +64,6 @@ def download_weights():
         output = weight_path+"/NER_weights/NER_weights.index"
         gdown.download(loaded["NER-index-url"], output, quiet=False)
 
-    # if not os.path.isfile(weight_path+"/NER_weights/checkpoint") or NER_flag:
-    #     print("Downloading NER checkpoint...")
-    #     output = weight_path+"/Emo_weights/checkpoint"
-    #     gdown.download(loaded["NER-check-url"], output, quiet=False)
 
     if not os.path.isfile(weight_path+"/NER_weights/NER_weights.data-00000-of-00001") or NER_flag:
         print("Downloading NER pretrained weights...")
