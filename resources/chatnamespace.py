@@ -13,9 +13,6 @@ class ChatNamespace(Namespace):
         print("Client connected",)
         self.user_id = 1
         user = UserModel.find_by_id(self.user_id)
-        user.cursor = None
-        user.save_to_db()
-
         self.value_container = {'name' : user.user_subname}
         self.res_controller = None
         #sessioned= session.get()
