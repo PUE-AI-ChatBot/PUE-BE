@@ -17,15 +17,26 @@ class NumberStatList(Resource):
         stats = StatisticModel.find_range_with_user_id(user_id, begin, date)
 
         if not stats :
-            return {'message': 'No statistics...'}, 400
+            return {
+                'isSummary':False,
+                "statistics" : []
+               }
 
         for stat in stats:
             temp = json.loads(stat.emotions)
+            total_cnt += stat.total
             for key in ret_emotions.keys():
                 ret_emotions[key] += temp[key]
-                total_cnt += temp[key]
 
-        return {'total':total_cnt,'statistics': ret_emotions}, 200
+
+        return {
+                'isSummary':True,
+                   'summary':{
+                        "total":total_cnt,
+                        'chart': ret_emotions
+                    },
+                    "statistics" : [stat.json() for stat in stats]
+               }, 200
 
 class RangeStatList(Resource):
     def get(self,end,begin):
@@ -36,32 +47,42 @@ class RangeStatList(Resource):
         stats = StatisticModel.find_range_with_user_id(user_id, begin, end)
 
         if not stats :
-            return {'message': 'No statistics...'}, 400
+            return {
+                'isSummary': False,
+                "statistics": []
+            }
 
         for stat in stats:
             temp = json.loads(stat.emotions)
+            total_cnt += stat.total
             for key in ret_emotions.keys():
                 ret_emotions[key] += temp[key]
-                total_cnt += temp[key]
 
-        return {'total':total_cnt,'statistics': ret_emotions}, 200
+        return {
+                   'isSummary': True,
+                   'summary': {
+                       "total": total_cnt,
+                       'chart': ret_emotions
+                   },
+                   "statistics": [stat.json() for stat in stats]
+               }, 200
 
 class YMDStatList(Resource):
     def get(self,day):
         user_id = 1
 
-        total_cnt=0
         stat = StatisticModel.find_by_dateYMD_with_user_id(user_id,day)
 
         if not stat :
-            return {'message': 'No statistics...'}, 400
+            return {
+                'isSummary': False,
+                "statistics": []
+            }
 
-        temp = json.loads(stat.emotions)
-
-        for key in temp.keys():
-            total_cnt += temp[key]
-
-        return {'total':total_cnt,'statistics': temp},200
+        return {
+                   'isSummary': False,
+                   "statistics" : [stat.json()]
+               }, 200
 
 class AllStatList(Resource):
     def get(self):
@@ -72,12 +93,22 @@ class AllStatList(Resource):
         stats = StatisticModel.find_by_user_id(user_id)
 
         if not stats :
-            return {'message': 'No statistics...'}, 400
+            return {
+                'isSummary': False,
+                "statistics": []
+            }
 
         for stat in stats:
             temp = json.loads(stat.emotions)
+            total_cnt += stat.total
             for key in ret_emotions.keys():
                 ret_emotions[key] += temp[key]
-                total_cnt += temp[key]
 
-        return {'total':total_cnt,'statistics': ret_emotions}, 200
+        return {
+                   'isSummary': True,
+                   'summary': {
+                       "total": total_cnt,
+                       'chart': ret_emotions
+                   },
+                   "statistics": [stat.json() for stat in stats]
+               }, 200

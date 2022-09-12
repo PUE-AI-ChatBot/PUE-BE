@@ -11,24 +11,29 @@ class StatisticModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_YMD = db.Column(db.String(80))
     emotions = db.Column(db.String(80))
+    total = db.Column(db.Integer())
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __init__(self, date_YMD,user_id):
         self.date_YMD = date_YMD
         self.emotions = json.dumps(init_emotion.copy())
-
+        self.total = 0
         self.user_id = user_id
 
     def json(self):
-        return {'emotions': json.loads(self.emotions)}
+        return {'date':self.date_YMD,
+                    'chart':{
+                        'total': self.total,
+                        'emotions': json.loads(self.emotions)
+                    }
+                }
 
     #1. day인 경우, month를 받으면 해당월에 관련된 모든 day 통계 표출
     #2. day인 경우, start와 end를 받으면 해당 기간에 관련된 모든 day 통계 표출
     #3. week인 경우, month를 받으면 해당 월과 관련된 모든 week 통계 표출
     #4. week인 경우, start를 받으면 해당 기간에 관련된 week 표출
     #5. month인 경우, month를 받으면 해당 월과 관련된 month 통계 표출
-
 
     @classmethod
     def find_by_id(cls, id):
