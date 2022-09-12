@@ -118,7 +118,7 @@ mocks = {
         "setup":{
             "length":4,
             "keys":[[],['name','worry-1'],['name'],[],['책 추천','노래 추천','대화하기','상담사 연결']],
-            "timer":2,
+            "timer":5,
             "is_continue":False,
             "is_response":True,
             'is_last':False,
@@ -142,7 +142,7 @@ mocks = {
         "setup":{
             "length":3,
             "keys":[['name'],[],[]],
-            "timer":3,
+            "timer":4,
             "is_continue": False,
             "is_response": True,
             'is_last':False,
@@ -166,7 +166,7 @@ mocks = {
             "length":1,
             "keys":[[]],
             "next":'5',
-            "timer":3,
+            "timer":2,
             "is_continue": False,
             'is_last':False,
             "is_response": True,
@@ -186,7 +186,7 @@ mocks = {
         "setup":{
             "length":1,
             "keys":[[]],
-            "timer":3,
+            "timer":2,
             "is_continue": False,
             "is_response": True,
             'is_last':False,
@@ -207,7 +207,7 @@ mocks = {
         "setup":{
             "length":2,
             "keys":[[],[]],
-            "timer": 3,
+            "timer": 4,
             'is_last':True,
             "is_continue": False,
             "is_response": False,
