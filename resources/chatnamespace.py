@@ -7,6 +7,7 @@ from datetime import datetime
 from pytz import timezone
 from .MOCK import mocks
 import time,json
+import eventlet
 
 class ChatNamespace(Namespace):
     def on_connect(self):
@@ -46,7 +47,7 @@ class ChatNamespace(Namespace):
                 self.scenario_processor(user,data['message'])
             else :
                 now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
-                self.emit("RECEIVE_MESSAGE", {"response": processed_data["System_Corpus"],"day":now[:8],'time':now[8:]})
+                emit("RECEIVE_MESSAGE", {"response": processed_data["System_Corpus"],"day":now[:8],'time':now[8:]})
                 chat = ChatModel(
                     user_id=user.id,
                     date_YMD=now[:8],
@@ -66,11 +67,11 @@ class ChatNamespace(Namespace):
             value_container[user.res_controller] = res
 
         for text, keys in zip(data['text'], setups['keys']):
-            time.sleep(setups['timer'])
+            eventlet.sleep(setups['timer'])
             now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
             real_keys = [value_container[key] if (key in value_container.keys()) else key for key in keys]
 
-            self.emit("RECEIVE_MESSAGE", {"response": text.format(*real_keys), "day": now[:8], 'time': now[8:]})
+            emit("RECEIVE_MESSAGE", {"response": text.format(*real_keys), "day": now[:8], 'time': now[8:]})
 
             chat = ChatModel(
                 user_id=user.id,
