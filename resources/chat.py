@@ -6,9 +6,6 @@ class NumberChatList(Resource):
     def get(self,date, number):
         user_id = 1
         chats = [chat.json() for chat in ChatModel.find_by_number_with_user_id(user_id,date,number)]
-        if not chats :
-            return {"message":"None"},400
-
         return {'chats': chats}, 200
 
 class RangeChatList(Resource):
@@ -16,17 +13,12 @@ class RangeChatList(Resource):
         user_id = 1
         chats = [chat.json() for chat in ChatModel.find_range_with_user_id(user_id, begin,end)]
 
-        if not chats :
-            return {"message":"None"},400
-
         return {'chats': chats}, 200
 
 class YMDChatList(Resource):
     def get(self,day):
         user_id = 1
         chats = [chat.json() for chat in ChatModel.find_all_by_dateYMD_with_user_id(user_id,day)]
-        if not chats :
-            return {"message":"None"},400
 
         return {'chats': chats},200
 
@@ -34,8 +26,6 @@ class AllChatList(Resource):
     def get(self):
         user_id = 1
         chats = [chat.json() for chat in ChatModel.find_all_by_user_id(user_id)]
-        if not chats :
-            return {"message":"None"},400
 
         return {'chats': chats},200
 

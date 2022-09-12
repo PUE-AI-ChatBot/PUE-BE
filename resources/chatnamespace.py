@@ -47,6 +47,14 @@ class ChatNamespace(Namespace):
             else :
                 now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
                 self.emit("RECEIVE_MESSAGE", {"response": processed_data["System_Corpus"],"day":now[:8],'time':now[8:]})
+                chat = ChatModel(
+                    user_id=user.id,
+                    date_YMD=now[:8],
+                    date_YMDHMS=now,
+                    direction='BOT',
+                    utterance=processed_data["System_Corpus"]
+                )
+                chat.save_to_db()
 
     def scenario_processor(self,user, res):
         data = mocks[user.cursor]
