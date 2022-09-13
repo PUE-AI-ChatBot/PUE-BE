@@ -4,4 +4,6 @@
 
 /packages/pue_ai/resources/weights/NER_weights/
 
+/packages/pue_ai/resources/config.json
+
 /pue
