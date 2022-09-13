@@ -72,6 +72,7 @@ def make_dummy():
     temp = json.loads(stat.emotions)
     temp["중립"]+=1
     stat.emotions = json.dumps(temp)
+    stat.total +=1
     stat.save_to_db()
 
     stat = StatisticModel(
@@ -81,6 +82,7 @@ def make_dummy():
     temp = json.loads(stat.emotions)
     temp["슬픔"] += 1
     stat.emotions = json.dumps(temp)
+    stat.total +=1
     stat.save_to_db()
 
     stat = StatisticModel(
@@ -90,6 +92,7 @@ def make_dummy():
     temp = json.loads(stat.emotions)
     temp["기쁨"] += 1
     stat.emotions = json.dumps(temp)
+    stat.total += 1
     stat.save_to_db()
 
 

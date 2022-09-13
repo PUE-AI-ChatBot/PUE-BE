@@ -3,6 +3,7 @@ from flask import session, request
 from resources import main_ai
 from models.user import UserModel
 from models.chat import ChatModel
+from models.statistic import StatisticModel
 from datetime import datetime
 from pytz import timezone
 from .MOCK import mocks
@@ -40,7 +41,20 @@ class ChatNamespace(Namespace):
                 user.value_container = json.dumps({'name':user.user_subname})
         else :
             processed_data = main_ai.run("Hello", data['message'])
-            if processed_data["Emotion"] in ['걱정']:
+
+            if processed_data["Emotion"] not in ('중립','기쁨'):
+                stat = StatisticModel.find_by_dateYMD_with_user_id(self.user_id,now[8:])
+                if not stat :
+                    stat = StatisticModel(
+                        date_YMD=now[8:],
+                        user_id=user.id
+                    )
+                temp = json.loads(stat.emotions)
+                temp["슬픔"] += 1
+                stat.emotions = json.dumps(temp)
+                stat.total += 1
+                stat.save_to_db()
+            if processed_data["Emotion"] in ('걱정'):
                 user.cursor = '1'
                 user.save_to_db()
 

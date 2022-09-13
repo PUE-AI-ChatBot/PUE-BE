@@ -33,7 +33,7 @@ class NumberStatList(Resource):
                 'isSummary':True,
                    'summary':{
                         "total":total_cnt,
-                        'chart': ret_emotions
+                        'emotions': ret_emotions
                     },
                     "statistics" : [stat.json() for stat in stats]
                }, 200
@@ -62,7 +62,7 @@ class RangeStatList(Resource):
                    'isSummary': True,
                    'summary': {
                        "total": total_cnt,
-                       'chart': ret_emotions
+                       'emotions': ret_emotions
                    },
                    "statistics": [stat.json() for stat in stats]
                }, 200
@@ -108,7 +108,7 @@ class AllStatList(Resource):
                    'isSummary': True,
                    'summary': {
                        "total": total_cnt,
-                       'chart': ret_emotions
+                       'emotions': ret_emotions
                    },
                    "statistics": [stat.json() for stat in stats]
                }, 200
