@@ -28,22 +28,21 @@
 ```
 │
 ├─models
-│  ├─user
-│  ├─chat
+│  ├─user         
+│  ├─chat        
 │  └─statistic
 │
 ├─packages
-│  └─pue_AI
+│  └─pue_AI           //submodule of PUE-AI
 │
 ├─resources
-│  ├─config
 │  ├─chat
-│  ├─chatnamespace
+│  ├─chatnamespace    //real-time chat resources with SocketIo
 │  ├─user
 │  ├─statistic
 │  └─oauth
 │
-└──app
+└──app                //RESTful API server
 
 ```
 
