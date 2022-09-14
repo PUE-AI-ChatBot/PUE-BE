@@ -90,14 +90,14 @@
 ## Project Settings
 
 ### Getting started
-**Essential Required dependencies version**
+**Essential Required dependency's version**
 ```
 python >= 3.8.x
 flask-socketio >= 5.x
 ```
 * check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
 
-#### Install pip  dependencies
+#### Install packages dependencies
 
 ```bash
 > pip install -r requirements.txt
