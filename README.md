@@ -103,11 +103,13 @@ flask-socketio >= 5.x
 > pip install -r requirements.txt
 ```
 
+
 #### Start server
 
 ```bash
 > python3 app.py
 ```
+  
 
 #### Start in background
 
@@ -121,40 +123,41 @@ flask-socketio >= 5.x
 > lsof -i :5000
 > sudo kill -9 <task-pid>
 ```
+   
 
 ### Configuring
 
-* PUE-AI is implanted by 'git submodules'.
-   * 'git submodule' has great advantage with version controller, unlike 'git subtree', which is unnecessary to control submodule's version. 
+#### PUE-AI is implanted by 'git submodules'.
+* 'git submodule' has great advantage with version controller, unlike 'git subtree', which is unnecessary to control submodule's version. 
 
 
-* The server will be running on http://localhost:5001.
-   * To change these host and port, modify variable named 'host', 'port' in "app.py"
+
+#### The server will be running on http://localhost:5001.
+* To change these host and port, modify variable named 'host', 'port' in "app.py"
    ```
     host = "0.0.0.0"
     port = 5000
    ```
-   
-   <br>
-   
-* AI submodules has setup codes for your environment.
-   * Environment variables are added on your computer
-   ```
-    > os.environ['CHATBOT_ROOT'] = <submodule's directory path>
-   ```
-   * Pretrained weights are downloaded on your 'pue_AI/resources/weights'.
-   * Weight is being managed by our team. It will be updated regulary once at a quarter.
-   
-  <br>
-  
-* AI submodules has setup codes for your environment.
-   * Environment variables are added on your computer
-  ```
-   > os.environ['CHATBOT_ROOT'] = <submodule's directory path>
-  ```
 
-* (Later) Google and Kakao key is on .env file.
-   * You should change Secert keys by your own.
+
+#### AI submodules has setup codes for your environment.
+* Environment variables are added on your computer
+```
+> os.environ['CHATBOT_ROOT'] = <submodule's directory path>
+```
+* Pretrained weights are downloaded on your 'pue_AI/resources/weights'.
+* Weight is being managed by our team. It will be updated regulary once at a quarter.
+
+#### AI submodules has setup codes for your environment.
+* Environment variables are added on your computer
+```
+> os.environ['CHATBOT_ROOT'] = <submodule's directory path>
+```
+
+
+#### (Later) Google and Kakao key is on .env file.
+* You should change Secert keys by your own.
+
 
 ## Model and Resources description
 **Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
@@ -162,8 +165,9 @@ flask-socketio >= 5.x
 * This server is oriented in 'RESTful' API server, which means resources are based on 'stateless'.
 * Need more information about endpoints, please check out our [PostMan documentary](https://documenter.getpostman.com/view/19121926/VUxSrQjX) 
    * Many API examples are available. You can see those request-response pairs, and also test server in local environment. 
-
+   
 ## REFERENCE
 ***It might be worse***, if you're missing out our well-organized [**WIKI!**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
+   
 
 ## LICENSE
