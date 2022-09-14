@@ -1,5 +1,5 @@
 # PUE-BE
-[![Pull Requests][pr-shield]][pr-url]
+![GitHub pull requests](https://img.shields.io/github/issues-pr/PUE-AI-ChatBot/PUE-BE)
 > ** :two_hearts: AI 심리상담 챗봇 PUE **  
 >
 > 퓨처로이컴퍼니 <br>
@@ -97,12 +97,6 @@
 [Issues](https://github.com/PUE-AI-ChatBot/PUE-BE/issues)
 
 ## REFERENCE
-You can also see the [**back-end repository**](https://github.com/dnd-side-project/dnd-7th-3-backend).
+You can also see the [**WIKI**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
 
 ## LICENSE
-This Project is [MIT licensed](https://github.com/dnd-side-project/dnd-7th-3-frontend/blob/main/LICENSE).
-
-
-
-[pr-shield]: https://img.shields.io/github/issues-pr/Study-CodingTest/Study?style=for-the-badge
-[pr-url]: https://github.com/PUE-AI-ChatBot/PUE-FE
