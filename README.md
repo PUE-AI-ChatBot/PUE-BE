@@ -4,8 +4,8 @@
 >
 > 퓨처로이컴퍼니 <br>
 > 프로젝트 기간 : 2022.08 ~ <br> <br>
-> 힘든 사람은 누구나 ***위로를 받을 수 있는*** <br>
-> ***전국민 위로 프로젝트*** AI 챗봇 서비스 <br> 
+> 힘든 사람 누구에게나 ***친구가 되어줄*** <br>
+> ***따듯한 위로를 전하는*** AI 챗봇 서비스 <br> 
 >
 
 ## Goals
@@ -24,6 +24,28 @@
     </table>
 </div>
 
+## File structure
+```
+│
+├─models
+│  ├─user
+│  ├─chat
+│  └─statistic
+│
+├─packages
+│  └─pue_AI
+│
+├─resources
+│  ├─config
+│  ├─chat
+│  ├─chatnamespace
+│  ├─user
+│  ├─statistic
+│  └─oauth
+│
+└──app
+
+```
 
 ## Environments
 <table>
@@ -68,6 +90,14 @@
 
 ## Project Settings
 
+### Getting started
+**Essential Required dependencies version**
+```
+python >= 3.8.x
+flask-socketio >= 5.x
+```
+* check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
+
 #### Install pip  dependencies
 
 ```bash
@@ -85,16 +115,23 @@
 ```bash
 > nohup python3 -u app.py &
 
-//To take look in logs
+#To take look into logs
 > tail -f nohup.out
 
-//To shut down server
+#To shut down server
 > lsof -i :5000
 > sudo kill -9 <task-pid>
 ```
 
-## Bug reporting
-[Issues](https://github.com/PUE-AI-ChatBot/PUE-BE/issues)
+## TODO
+- ✔ JWT Authorization
+- ✔ Add advanced Encryption
+- ✔ Apply Dockers
+- ✔ Apply advanced branch strategy
+- ✔ Apply CI/CD
+- ✔ Understand what is CORS and how it does work
+- ✔ Optimize AI-BE data flow and make more smoothly
+- ✔ Modify scenario selector and related function 
 
 ## REFERENCE
 You can also see the [**WIKI**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
