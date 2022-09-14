@@ -122,15 +122,22 @@ flask-socketio >= 5.x
 > sudo kill -9 <task-pid>
 ```
 
-## TODO
-- ✔ JWT Authorization
-- ✔ Add advanced Encryption
-- ✔ Apply Dockers
-- ✔ Apply advanced branch strategy
-- ✔ Apply CI/CD
-- ✔ Understand what is CORS and how it does work
-- ✔ Optimize AI-BE data flow and make more smoothly
-- ✔ Modify scenario selector and related function 
+### Configuring
+
+* The server will be running on http://localhost:5001.
+   * To change these host and port, you should modify variable named 'host', 'port' in "app.py"
+   ```
+    host = "0.0.0.0"
+    port = 5000
+   ```
+* AI submodules has setup codes for your environment.
+   * Environment variables are added on your computer
+   ```
+    > os.environ['CHATBOT_ROOT'] = <submodule's directory path>
+   ```
+* (Later) Google and Kakao key is on .env file.
+   * You can change Secert keys by your own.
+   
 
 ## REFERENCE
 You can also see the [**WIKI**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
