@@ -130,18 +130,32 @@ flask-socketio >= 5.x
     host = "0.0.0.0"
     port = 5000
    ```
+   
+   <br>
+   
 * AI submodules has setup codes for your environment.
    * Environment variables are added on your computer
    ```
     > os.environ['CHATBOT_ROOT'] = <submodule's directory path>
    ```
+   * Pretrained weights are downloaded on your 'pue_AI/resources/weights'.
+   * Weight is being managed by our team. It will be updated regulary once at a quarter.
+   
+  <br>
+  
+* AI submodules has setup codes for your environment.
+   * Environment variables are added on your computer
+  ```
+   > os.environ['CHATBOT_ROOT'] = <submodule's directory path>
+  ```
+
 * (Later) Google and Kakao key is on .env file.
    * You should change Secert keys by your own.
 
 ## Model and Resources description
 **Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
 
-* This Server is oriented in RESTful API server, which means resources are based on Stateless.
+* This server is oriented in 'RESTful' API server, which means resources are based on 'stateless'.
 * Need more information about endpoints, please check out our [PostMan documentary](https://documenter.getpostman.com/view/19121926/VUxSrQjX) 
    * Many API examples are available. You can see those request-response pairs, and also test server in local environment. 
 
