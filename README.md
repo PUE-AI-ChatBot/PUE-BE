@@ -125,7 +125,7 @@ flask-socketio >= 5.x
 ### Configuring
 
 * The server will be running on http://localhost:5001.
-   * To change these host and port, you should modify variable named 'host', 'port' in "app.py"
+   * To change these host and port, modify variable named 'host', 'port' in "app.py"
    ```
     host = "0.0.0.0"
     port = 5000
@@ -136,10 +136,16 @@ flask-socketio >= 5.x
     > os.environ['CHATBOT_ROOT'] = <submodule's directory path>
    ```
 * (Later) Google and Kakao key is on .env file.
-   * You can change Secert keys by your own.
-   
+   * You should change Secert keys by your own.
+
+## Model and Resources description
+**Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
+
+* This Server is oriented in RESTful API server, which means resources are based on Stateless.
+* Need more information about endpoints, please check out our [PostMan documentary](https://documenter.getpostman.com/view/19121926/VUxSrQjX) 
+   * Many API examples are available. You can see those request-response pairs, and also test server in local environment. 
 
 ## REFERENCE
-You can also see the [**WIKI**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
+***It might be worse***, if you're missing out our well-organized [**WIKI!**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
 
 ## LICENSE
