@@ -1,15 +1,16 @@
 # PUE-BE
 [![Pull Requests][pr-shield]][pr-url]
-> **🏃 땅따먹기 기반 운동 장려 앱 NEMODU**  
+> ** :two_hearts: AI 심리상담 챗봇 PUE **  
 >
-> DND 7기 <br>
-> 프로젝트 기간 : 2022.07 ~ <br> <br>
-> **Healthy Pleasure,** 즐거운 건강관리를 위해 <br>
-> 나의 일상 속 움직임을 기록하고, 친구와 재미있게 운동할 수 있는 앱 서비스
+> 퓨처로이컴퍼니 <br>
+> 프로젝트 기간 : 2022.08 ~ <br> <br>
+> 힘든 사람은 누구나 ***위로를 받을 수 있는*** <br>
+> ***전국민 위로 프로젝트*** AI 챗봇 서비스 <br> 
 >
 
 ## Goals
-As we go through the COVID-19, most of the 'meeting places' are rapidly moving to various virtual conference spaces started from Zoom. As such, there are many side effects, A typical example is Zoom Fatigue, which causes a lot of fatigue in virtual conferences than usual conversations. We think the main causes of that are
+자살예방 상담전화의 평균 응대율 ***36.3%***
+상담사 고용 증가만으로는 해결이 어려운 상황에서 챗봇을 통해 상담 응대율을 높이고, 상담사가 고위험군 환자를 효율적으로 상담하는 것이 목적입니다.
 
 ## Developers
 <div align="left">
