@@ -124,6 +124,10 @@ flask-socketio >= 5.x
 
 ### Configuring
 
+* PUE-AI is implanted by 'git submodules'.
+   * 'git submodule' has great advantage with version controller, unlike 'git subtree', which is unnecessary to control submodule's version. 
+
+
 * The server will be running on http://localhost:5001.
    * To change these host and port, modify variable named 'host', 'port' in "app.py"
    ```
