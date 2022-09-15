@@ -25,8 +25,8 @@
 
 #### Library
 > * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)   
+<br>
 <img src="https://img.shields.io/badge/flask--restful-0.3.9-red"> <img src="https://img.shields.io/badge/flask--socketIO-5.3.0-brightgreen"> <img src="https://img.shields.io/badge/flask--SQLAlchemy-2.5.1-orange">
-<br/>
 
 ### Communication
 
@@ -55,7 +55,7 @@
 
 ```
 
-## Project Settings
+## ⚙️ Project Settings
 
 > **Essential Required dependency's version**
 > ```
@@ -92,7 +92,7 @@ sudo kill -9 <task-pid>
 ```
    
 
-## Auto Setup Feature
+## 📜 Auto Setup Feature
 > *PUE-AI* is implanted into this project as submodule.   
 > It has functions which will setup your environmental variables automatically.   
    
@@ -120,7 +120,7 @@ print("Environment Variable Set Successfully. root: %s" % (os.environ['CHATBOT_R
         gdown.download(loaded["EMO-index-url"], output, quiet=False)
 ```
 
-## Model and Resources description
+## 📜 Model and Resources description
 > **Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
 
 ### DB Models
@@ -243,9 +243,14 @@ curl --location --request GET 'http://133.186.215.54:5001//chats/latest/20220910
 ```
    
    
-## DOCUMENTAION
+## 📚 Documentations
 
-***It might be worse***, if you're missing out our [**WIKI!**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
-   
+- [Branch Strategy](https://github.com/PUE-AI-ChatBot/PUE-FE/wiki/Branch-Strategy)
 
-## LICENSE
+- [Commit Convention](https://github.com/PUE-AI-ChatBot/PUE-FE/wiki/Commit-Convention)
+
+- [Workflow](https://github.com/PUE-AI-ChatBot/PUE-FE/wiki/Workflow)
+
+## 🔒 LICENSE
+
+Preparing... 
