@@ -129,16 +129,29 @@ print("Environment Variable Set Successfully. root: %s" % (os.environ['CHATBOT_R
 ## Model and Resources description
 > **Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
 
-### Models
+### DB Models
+> Managed and Controlled with SQLAchemy    
 #### User
+* User's personal information table
+* Relationships(has 2 child table)
+   * Chat table(child) : chatlog
+   * Statistic table(child) : number of user's daily emotion   
 #### Chat
+* User's chatbot logs(encrypted) 
+* Relationships(has 1 parent table)
+   * User table(parent)    
 #### Statistic
-
+* User's number of user's daily emotion logs(encrypted) 
+* Relationships(has 1 parent table)
+   * User table(parent)     
 ### Resources
+> Apis coming through endpoints are processed by (RESTful)resources
 #### Authorization
+* User must have JWT to idenify their account.   
 #### Find by day range
+* Every resources have range method, which can get charts in multiple sqeuntial dates.   
 #### Find by number
-   
+* Every resources have number method, which can get charts in past sqeuntial dates.       
    
    
 ## DOCUMENTAION
