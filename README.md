@@ -18,15 +18,15 @@
 ## 🔨 Environments
 
 #### Language 
-<img src="https://img.shields.io/badge/python-3.8.1-blue">
+<img src="https://img.shields.io/badge/python-3.8.1-blue?style=for-the-badge&logo=appveyor">
 
 #### Framework
-<img src="https://img.shields.io/badge/flask-2.1.2-black">
+<img src="https://img.shields.io/badge/flask-2.1.2-black?style=for-the-badge&logo=appveyor">
 
 #### Library
 > * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)   
 <br>
-<img src="https://img.shields.io/badge/flask--restful-0.3.9-red"> <img src="https://img.shields.io/badge/flask--socketIO-5.3.0-brightgreen"> <img src="https://img.shields.io/badge/flask--SQLAlchemy-2.5.1-orange">
+<img src="https://img.shields.io/badge/flask--restful-0.3.9-red?style=for-the-badge&logo=appveyor"> <img src="https://img.shields.io/badge/flask--socketIO-5.3.0-brightgreen?style=for-the-badge&logo=appveyor"> <img src="https://img.shields.io/badge/flask--SQLAlchemy-2.5.1-orange?style=for-the-badge&logo=appveyor">
 
 ### Communication
 
