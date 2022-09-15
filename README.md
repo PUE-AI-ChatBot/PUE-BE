@@ -85,7 +85,6 @@ flask-socketio >= 5.x
 > python3 app.py
 ```
   
-
 #### Start in background
 
 ```bash
@@ -99,8 +98,6 @@ flask-socketio >= 5.x
 > sudo kill -9 <task-pid>
 ```
    
-
-### Feature
 
 #### Auto Setup
 * PUE-AI is implanted by 'git submodules'.
@@ -142,8 +139,12 @@ flask-socketio >= 5.x
 * Need more information about endpoints, please check out our [PostMan documentary](https://documenter.getpostman.com/view/19121926/VUxSrQjX) 
    * Many API examples are available. You can see those request-response pairs, and also test server in local environment. 
    
-## REFERENCE
-***It might be worse***, if you're missing out our well-organized [**WIKI!**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
+   
+   
+   
+## DOCUMENTAION
+
+***It might be worse***, if you're missing out our [**WIKI!**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
    
 
 ## LICENSE
