@@ -9,9 +9,8 @@
 >
 
 ## Goals
-자살예방 상담전화의 평균 응대율 ***36.3%...***   
-저희 퓨처로이컴퍼니는 상담사 고용 증가만으로는 해결이 어려운 상황에서 챗봇을 통해 상담 응대율을 높이고, 상담사가 고위험군 환자를 효율적으로 상담하는 것이 목적입니다.
-
+코로나 블루로 우울감을 호소하는 사람이 많아지자 상담사 고용을 늘렸지만 여전히 응답률이 저조하였습니다. 이를 위해 정보 제공용 챗봇을 뛰어넘어 가벼운 심리 상담이 가능한 챗봇을 만들고자 하였습니다. 상담이 여려운 시간대에도 상담이 가능하며 챗봇 상담의 높은 접근성으로 기존 상담에 대한 인식을 개선하고자 개발하게 되었습니다.
+ 
 ## Developers
 <div align="left">
     <table border="1">
@@ -47,127 +46,212 @@
 ```
 
 ## Environments
-<table>
-<tr>
- <td align="center">언어</td>
- <td>
-  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/>
- </td>
-</tr>
-<tr>
- <td align="center">IDE</td>
- <td>
-    <img src="https://img.shields.io/badge/VisualStudioCode-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white"/>&nbsp </td>
-</tr>
-<tr>
- <td align="center">프레임워크</td>
- <td>
-     <img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/>&nbsp
- </td>
-</tr>
-<tr>
- <td align="center">라이브러리</td>
- <td>
-  <img src="https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101"/>&nbsp
-</tr>
-<tr>
- <td align="center">패키지관리</td>
- <td>
-    <img src="https://img.shields.io/badge/Anaconda-%2344A833.svg?style=for-the-badge&logo=anaconda&logoColor=white"/>&nbsp
-  </td>
-</tr>
-<tr>
- <td align="center">협업툴</td>
- <td>
-    <img src="https://img.shields.io/badge/ClickUp-7B68EE.svg?style=for-the-badge&logo=ClickUp&logoColor=white"/>&nbsp
-    <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"/>&nbsp
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>&nbsp
- </td>
-</tr>
-</table>
 
+### Development
+
+#### Language & Framework
+  
+  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/> <img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/>   
+
+#### Library
+  <img src="https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101"/>   
+
+### Communication
+ <img src="https://img.shields.io/badge/ClickUp-7B68EE.svg?style=for-the-badge&logo=ClickUp&logoColor=white"/> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>   
+
+<br>
 
 ## Project Settings
 
-### Getting started
-**Essential Required dependency's version**
-```
-python >= 3.8.x
-flask-socketio >= 5.x
-```
-* check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
+> **Essential Required dependency's version**
+> ```
+> python >= 3.8.x
+> flask-socketio >= 5.x
+> ```
+> * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
+> 
 
-#### Install packages dependencies
+### Install packages dependencies
 
 ```bash
 > pip install -r requirements.txt
 ```
 
 
-#### Start server
+### Start server
 
 ```bash
-> python3 app.py
+python3 app.py
 ```
   
-
-#### Start in background
+### Start in background
 
 ```bash
-> nohup python3 -u app.py &
+nohup python3 -u app.py &
 
 #To take look into logs
-> tail -f nohup.out
+tail -f nohup.out
 
 #To shut down server
-> lsof -i :5000
-> sudo kill -9 <task-pid>
+lsof -i :5000
+sudo kill -9 <task-pid>
 ```
    
 
-### Configuring
-
-#### PUE-AI is implanted by 'git submodules'.
-* 'git submodule' has great advantage with version controller, unlike 'git subtree', which is unnecessary to control submodule's version. 
-
-
-
-#### The server will be running on http://localhost:5001.
-* To change these host and port, modify variable named 'host', 'port' in "app.py"
-   ```
-    host = "0.0.0.0"
-    port = 5000
-   ```
-
-
-#### AI submodules has setup codes for your environment.
-* Environment variables are added on your computer
+## Auto Setup Feature
+> *PUE-AI* is implanted into this project as submodule.   
+> It has functions which will setup your environmental variables automatically.   
+   
+### Environment Variable
+**function : setup_environ**
+* Initiating with PUE-AI package, it will have set your environment variable first.
 ```
-> os.environ['CHATBOT_ROOT'] = <submodule's directory path>
-```
-* Pretrained weights are downloaded on your 'pue_AI/resources/weights'.
-* Weight is being managed by our team. It will be updated regulary once at a quarter.
+this_dir, this_filename = os.path.split(__file__)
 
-#### AI submodules has setup codes for your environment.
-* Environment variables are added on your computer
-```
-> os.environ['CHATBOT_ROOT'] = <submodule's directory path>
+os.environ['CHATBOT_ROOT'] = this_dir
+
+print("Environment Variable Set Successfully. root: %s" % (os.environ['CHATBOT_ROOT'])) 
 ```
 
+### Download pretrained weights
+**function : download_weights**
+* Initiating with PUE-AI package, it will have get weights from this [drive](https://drive.google.com/drive/u/0/folders/1M0t0ngQO-TdjeRYoS69C4ZiAqzbN2fIV).
+```
+ if not os.path.exists(weight_path+"/Emo_weights") :
+        os.makedirs(weight_path+"/Emo_weights")
 
-#### (Later) Google and Kakao key is on .env file.
-* You should change Secert keys by your own.
-
+    if not os.path.isfile(weight_path+"/Emo_weights/Emo_weights.index") or Emo_flag:
+        print("Downloading Emo pretrained index...")
+        output = weight_path+"/Emo_weights/Emo_weights.index"
+        gdown.download(loaded["EMO-index-url"], output, quiet=False)
+```
 
 ## Model and Resources description
-**Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
+> **Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
 
-* This server is oriented in 'RESTful' API server, which means resources are based on 'stateless'.
-* Need more information about endpoints, please check out our [PostMan documentary](https://documenter.getpostman.com/view/19121926/VUxSrQjX) 
-   * Many API examples are available. You can see those request-response pairs, and also test server in local environment. 
+### DB Models
+> Managed and Controlled with SQLAchemy    
+#### User
+* User's personal information table
+* Relationships(has 2 child table)
+   * Chat table(child) : chatlog
+   * Statistic table(child) : number of user's daily emotion   
+#### Chat
+* User's chatbot logs(encrypted) 
+* Relationships(has 1 parent table)
+   * User table(parent)    
+#### Statistic
+* User's number of user's daily emotion logs(encrypted) 
+* Relationships(has 1 parent table)
+   * User table(parent)     
+### Resources
+> Apis coming through endpoints are processed by (RESTful)resources
+#### Authorization
+* User must have JWT to idenify their account.   
+#### Find by day range
+* Every resources have range method, which can get charts in multiple sqeuntial dates.   
+```
+#request url example
+curl --location --request GET 'http://133.186.215.54:5001//stat/latest/20220910/before/7'
+```
+```
+#response example in statistic resource.
+{
+    "isSummary": true,
+    "summary": {
+        "total": 0,
+        "emotions": {
+            "불만": 0,
+            "중립": 1,
+            "당혹": 0,
+            "기쁨": 0,
+            "걱정": 0,
+            "질투": 0,
+            "슬픔": 1,
+            "죄책감": 0,
+            "연민": 0
+        }
+    },
+    "statistics": [
+        {
+            "date": "20220906",
+            "chart": {
+                "total": 0,
+                "emotions": {
+                    "불만": 0,
+                    "중립": 1,
+                    "당혹": 0,
+                    "기쁨": 0,
+                    "걱정": 0,
+                    "질투": 0,
+                    "슬픔": 0,
+                    "죄책감": 0,
+                    "연민": 0
+                }
+            }
+        },
+        {
+            "date": "20220908",
+            "chart": {
+                "total": 0,
+                "emotions": {
+                    "불만": 0,
+                    "중립": 0,
+                    "당혹": 0,
+                    "기쁨": 0,
+                    "걱정": 0,
+                    "질투": 0,
+                    "슬픔": 1,
+                    "죄책감": 0,
+                    "연민": 0
+                }
+            }
+        }
+    ]
+}
+```
+#### Find by number
+* Every resources have number method, which can get charts in past sqeuntial dates.   
+```
+#request url example
+curl --location --request GET 'http://133.186.215.54:5001//chats/latest/20220910235700/number/4'
+```
+```
+#response example in statistic resource.
+{
+  "chats": [
+    {
+      "day": "20220910",
+      "time": "235645",
+      "direction": "BOT",
+      "utterance": "네, 좋은 밤 되세요."
+    },
+    {
+      "day": "20220910",
+      "time": "235640",
+      "direction": "USER",
+      "utterance": "내일 봐!"
+    },
+    {
+      "day": "20220908",
+      "time": "020030",
+      "direction": "BOT",
+      "utterance": "무슨 일이 있으신가요??"
+    },
+    {
+      "day": "20220908",
+      "time": "020022",
+      "direction": "USER",
+      "utterance": "나 우울해..."
+    }
+  ]
+}
+```
    
-## REFERENCE
-***It might be worse***, if you're missing out our well-organized [**WIKI!**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
+   
+## DOCUMENTAION
+
+***It might be worse***, if you're missing out our [**WIKI!**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
    
 
 ## LICENSE
