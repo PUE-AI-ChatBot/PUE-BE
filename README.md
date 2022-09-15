@@ -47,45 +47,20 @@
 ```
 
 ## Environments
-<table>
-<tr>
- <td align="center">언어</td>
- <td>
-  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/>
- </td>
-</tr>
-<tr>
- <td align="center">IDE</td>
- <td>
-    <img src="https://img.shields.io/badge/VisualStudioCode-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white"/>&nbsp </td>
-</tr>
-<tr>
- <td align="center">프레임워크</td>
- <td>
-     <img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/>&nbsp
- </td>
-</tr>
-<tr>
- <td align="center">라이브러리</td>
- <td>
-  <img src="https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101"/>&nbsp
-</tr>
-<tr>
- <td align="center">패키지관리</td>
- <td>
-    <img src="https://img.shields.io/badge/Anaconda-%2344A833.svg?style=for-the-badge&logo=anaconda&logoColor=white"/>&nbsp
-  </td>
-</tr>
-<tr>
- <td align="center">협업툴</td>
- <td>
-    <img src="https://img.shields.io/badge/ClickUp-7B68EE.svg?style=for-the-badge&logo=ClickUp&logoColor=white"/>&nbsp
-    <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"/>&nbsp
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>&nbsp
- </td>
-</tr>
-</table>
 
+### Development
+
+#### Language & Framework
+  
+  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/> <img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/>   
+
+#### Library
+  <img src="https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101"/>   
+
+### Communication
+ <img src="https://img.shields.io/badge/ClickUp-7B68EE.svg?style=for-the-badge&logo=ClickUp&logoColor=white"/> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>   
+
+<br>
 
 ## Project Settings
 
@@ -125,10 +100,11 @@ flask-socketio >= 5.x
 ```
    
 
-### Configuring
+### Feature
 
-#### PUE-AI is implanted by 'git submodules'.
-* 'git submodule' has great advantage with version controller, unlike 'git subtree', which is unnecessary to control submodule's version. 
+#### Auto Setup
+* PUE-AI is implanted by 'git submodules'.
+   * 'git submodule' has great advantage with version controller, unlike 'git subtree', which is unnecessary to control submodule's version. 
 
 
 
