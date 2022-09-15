@@ -1,27 +1,37 @@
-# PUE-BE
-![GitHub pull requests](https://img.shields.io/github/issues-pr/PUE-AI-ChatBot/PUE-BE)
-> ** :two_hearts: AI 심리상담 챗봇 PUE **  
+# 💬 PUE-BE
+[![Pull Requests](https://img.shields.io/github/issues-pr/PUE-AI-ChatBot/PUE-BE?style=for-the-badge)](https://github.com/PUE-AI-ChatBot/PUE-BE/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/PUE-AI-ChatBot/PUE-BE?style=for-the-badge)](https://github.com/PUE-AI-ChatBot/PUE-BE/issues)
+![GitHub last commit](https://img.shields.io/github/last-commit/PUE-AI-ChatBot/PUE-BE?style=for-the-badge)
+> :two_hearts: **AI 심리상담 챗봇 PUE**  
 >
 > 퓨처로이컴퍼니 <br>
-> 프로젝트 기간 : 2022.08 ~ <br> <br>
+> 프로젝트 시작 : 2022.08 <br> <br>
 > 힘든 사람 누구에게나 ***친구가 되어줄*** <br>
 > ***따듯한 위로를 전하는*** AI 챗봇 서비스 <br> 
 >
 
-## Goals
-코로나 블루로 우울감을 호소하는 사람이 많아지자 상담사 고용을 늘렸지만 여전히 응답률이 저조하였습니다. 이를 위해 정보 제공용 챗봇을 뛰어넘어 가벼운 심리 상담이 가능한 챗봇을 만들고자 하였습니다. 상담이 여려운 시간대에도 상담이 가능하며 챗봇 상담의 높은 접근성으로 기존 상담에 대한 인식을 개선하고자 개발하게 되었습니다.
- 
-## Developers
-<div align="left">
-    <table border="1">
-        <th><a href="https://github.com/chanbyeongee">이병찬</a></th>
-        <tr>
-            <td>
-                <img src="https://github.com/chanbyeongee.png" width='80' />
-            </td>
-        </tr>
-    </table>
-</div>
+## 🥇 Goals
+코로나 블루로 우울감을 호소하는 사람이 많아지자 상담사 고용을 늘렸지만 여전히 응답률이 저조하였습니다. <br>
+이를 위해 정보 제공용 챗봇을 뛰어넘어 가벼운 심리 상담이 가능한 챗봇을 만들고자 하였습니다. <br>
+상담이 여려운 시간대에도 상담이 가능하며 챗봇 상담의 높은 접근성으로 기존 상담에 대한 인식을 개선하고자 개발하게 되었습니다. <br>
+
+## 🔨 Environments
+
+#### Language 
+<img src="https://img.shields.io/badge/python-3.8.1-blue">
+
+#### Framework
+<img src="https://img.shields.io/badge/flask-2.1.2-black">
+
+#### Library
+
+<img src="https://img.shields.io/badge/flask--restful-0.3.9-red"> <img src="https://img.shields.io/badge/flask--socketIO-5.3.0-brightgreen"> <img src="https://img.shields.io/badge/flask--SQLAlchemy-2.5.1-orange">
+<br/>
+
+### Communication
+
+<img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=Slack&logoColor=white"/>  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>
+
 
 ## File structure
 ```
