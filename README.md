@@ -24,7 +24,7 @@
 <img src="https://img.shields.io/badge/flask-2.1.2-black">
 
 #### Library
-> * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
+> * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)   
 <img src="https://img.shields.io/badge/flask--restful-0.3.9-red"> <img src="https://img.shields.io/badge/flask--socketIO-5.3.0-brightgreen"> <img src="https://img.shields.io/badge/flask--SQLAlchemy-2.5.1-orange">
 <br/>
 
