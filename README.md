@@ -24,7 +24,7 @@
 <img src="https://img.shields.io/badge/flask-2.1.2-black">
 
 #### Library
-
+> * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
 <img src="https://img.shields.io/badge/flask--restful-0.3.9-red"> <img src="https://img.shields.io/badge/flask--socketIO-5.3.0-brightgreen"> <img src="https://img.shields.io/badge/flask--SQLAlchemy-2.5.1-orange">
 <br/>
 
@@ -55,22 +55,6 @@
 
 ```
 
-## Environments
-
-### Development
-
-#### Language & Framework
-  
-  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/> <img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/>   
-
-#### Library
-  <img src="https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101"/>   
-
-### Communication
- <img src="https://img.shields.io/badge/ClickUp-7B68EE.svg?style=for-the-badge&logo=ClickUp&logoColor=white"/> <img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>   
-
-<br>
-
 ## Project Settings
 
 > **Essential Required dependency's version**
@@ -78,7 +62,7 @@
 > python >= 3.8.x
 > flask-socketio >= 5.x
 > ```
-> * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
+
 > 
 
 ### Install packages dependencies
