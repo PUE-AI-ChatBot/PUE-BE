@@ -125,14 +125,19 @@ print("Environment Variable Set Successfully. root: %s" % (os.environ['CHATBOT_R
         output = weight_path+"/Emo_weights/Emo_weights.index"
         gdown.download(loaded["EMO-index-url"], output, quiet=False)
 ```
-    
+
 ## Model and Resources description
 > **Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
 
-* This server is oriented in 'RESTful' API server, which means resources are based on 'stateless'.
-* Need more information about endpoints, please check out our [PostMan documentary](https://documenter.getpostman.com/view/19121926/VUxSrQjX) 
-   * Many API examples are available. You can see those request-response pairs, and also test server in local environment. 
-   
+### Models
+#### User
+#### Chat
+#### Statistic
+
+### Resources
+#### Authorization
+#### Find by day range
+#### Find by number
    
    
    
