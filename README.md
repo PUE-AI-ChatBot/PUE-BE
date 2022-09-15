@@ -9,9 +9,8 @@
 >
 
 ## Goals
-자살예방 상담전화의 평균 응대율 ***36.3%...***   
-저희 퓨처로이컴퍼니는 상담사 고용 증가만으로는 해결이 어려운 상황에서 챗봇을 통해 상담 응대율을 높이고, 상담사가 고위험군 환자를 효율적으로 상담하는 것이 목적입니다.
-
+코로나 블루로 우울감을 호소하는 사람이 많아지자 상담사 고용을 늘렸지만 여전히 응답률이 저조하였습니다. 이를 위해 정보 제공용 챗봇을 뛰어넘어 가벼운 심리 상담이 가능한 챗봇을 만들고자 하였습니다. 상담이 여려운 시간대에도 상담이 가능하며 챗봇 상담의 높은 접근성으로 기존 상담에 대한 인식을 개선하고자 개발하게 되었습니다.
+ 
 ## Developers
 <div align="left">
     <table border="1">
@@ -64,76 +63,71 @@
 
 ## Project Settings
 
-### Getting started
-**Essential Required dependency's version**
-```
-python >= 3.8.x
-flask-socketio >= 5.x
-```
-* check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
+> **Essential Required dependency's version**
+> ```
+> python >= 3.8.x
+> flask-socketio >= 5.x
+> ```
+> * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
+> 
 
-#### Install packages dependencies
+### Install packages dependencies
 
 ```bash
 > pip install -r requirements.txt
 ```
 
 
-#### Start server
+### Start server
 
 ```bash
-> python3 app.py
+python3 app.py
 ```
   
-#### Start in background
+### Start in background
 
 ```bash
-> nohup python3 -u app.py &
+nohup python3 -u app.py &
 
 #To take look into logs
-> tail -f nohup.out
+tail -f nohup.out
 
 #To shut down server
-> lsof -i :5000
-> sudo kill -9 <task-pid>
+lsof -i :5000
+sudo kill -9 <task-pid>
 ```
    
 
-#### Auto Setup
-* PUE-AI is implanted by 'git submodules'.
-   * 'git submodule' has great advantage with version controller, unlike 'git subtree', which is unnecessary to control submodule's version. 
-
-
-
-#### The server will be running on http://localhost:5001.
-* To change these host and port, modify variable named 'host', 'port' in "app.py"
-   ```
-    host = "0.0.0.0"
-    port = 5000
-   ```
-
-
-#### AI submodules has setup codes for your environment.
-* Environment variables are added on your computer
+## Auto Setup Feature
+> *PUE-AI* is implanted into this project as submodule.   
+> It has functions which will setup your environmental variables automatically.   
+   
+### Environment Variable
+**function : setup_environ**
+* Initiating with PUE-AI package, it will have set your environment variable first.
 ```
-> os.environ['CHATBOT_ROOT'] = <submodule's directory path>
-```
-* Pretrained weights are downloaded on your 'pue_AI/resources/weights'.
-* Weight is being managed by our team. It will be updated regulary once at a quarter.
+this_dir, this_filename = os.path.split(__file__)
 
-#### AI submodules has setup codes for your environment.
-* Environment variables are added on your computer
-```
-> os.environ['CHATBOT_ROOT'] = <submodule's directory path>
+os.environ['CHATBOT_ROOT'] = this_dir
+
+print("Environment Variable Set Successfully. root: %s" % (os.environ['CHATBOT_ROOT'])) 
 ```
 
+### Download pretrained weights
+**function : download_weights**
+* Initiating with PUE-AI package, it will have get weights from this [drive](https://drive.google.com/drive/u/0/folders/1M0t0ngQO-TdjeRYoS69C4ZiAqzbN2fIV).
+```
+ if not os.path.exists(weight_path+"/Emo_weights") :
+        os.makedirs(weight_path+"/Emo_weights")
 
-#### (Later) Google and Kakao key is on .env file.
-* You should change Secert keys by your own.
-
-
+    if not os.path.isfile(weight_path+"/Emo_weights/Emo_weights.index") or Emo_flag:
+        print("Downloading Emo pretrained index...")
+        output = weight_path+"/Emo_weights/Emo_weights.index"
+        gdown.download(loaded["EMO-index-url"], output, quiet=False)
+```
+    
 ## Model and Resources description
-**Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
+> **Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
 
 * This server is oriented in 'RESTful' API server, which means resources are based on 'stateless'.
 * Need more information about endpoints, please check out our [PostMan documentary](https://documenter.getpostman.com/view/19121926/VUxSrQjX) 
