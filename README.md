@@ -245,11 +245,14 @@ curl --location --request GET 'http://133.186.215.54:5001//chats/latest/20220910
    
 ## 📚 Documentations
 
-- [Branch Strategy](https://github.com/PUE-AI-ChatBot/PUE-FE/wiki/Branch-Strategy)
+- [Branch Strategy](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki/Branch-Strategy)
 
-- [Commit Convention](https://github.com/PUE-AI-ChatBot/PUE-FE/wiki/Commit-Convention)
+- [Git Convention](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki/Git-Convention)
 
-- [Workflow](https://github.com/PUE-AI-ChatBot/PUE-FE/wiki/Workflow)
+- [Coding Convention](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki/Coding-Convention)
+
+- [Workflow](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki/Wokflow)
+
 
 ## 🔒 LICENSE
 
