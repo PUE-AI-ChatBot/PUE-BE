@@ -150,8 +150,103 @@ print("Environment Variable Set Successfully. root: %s" % (os.environ['CHATBOT_R
 * User must have JWT to idenify their account.   
 #### Find by day range
 * Every resources have range method, which can get charts in multiple sqeuntial dates.   
+```
+#request url example
+curl --location --request GET 'http://133.186.215.54:5001//stat/latest/20220910/before/7'
+```
+```
+#response example in statistic resource.
+{
+    "isSummary": true,
+    "summary": {
+        "total": 0,
+        "emotions": {
+            "불만": 0,
+            "중립": 1,
+            "당혹": 0,
+            "기쁨": 0,
+            "걱정": 0,
+            "질투": 0,
+            "슬픔": 1,
+            "죄책감": 0,
+            "연민": 0
+        }
+    },
+    "statistics": [
+        {
+            "date": "20220906",
+            "chart": {
+                "total": 0,
+                "emotions": {
+                    "불만": 0,
+                    "중립": 1,
+                    "당혹": 0,
+                    "기쁨": 0,
+                    "걱정": 0,
+                    "질투": 0,
+                    "슬픔": 0,
+                    "죄책감": 0,
+                    "연민": 0
+                }
+            }
+        },
+        {
+            "date": "20220908",
+            "chart": {
+                "total": 0,
+                "emotions": {
+                    "불만": 0,
+                    "중립": 0,
+                    "당혹": 0,
+                    "기쁨": 0,
+                    "걱정": 0,
+                    "질투": 0,
+                    "슬픔": 1,
+                    "죄책감": 0,
+                    "연민": 0
+                }
+            }
+        }
+    ]
+}
+```
 #### Find by number
-* Every resources have number method, which can get charts in past sqeuntial dates.       
+* Every resources have number method, which can get charts in past sqeuntial dates.   
+```
+#request url example
+curl --location --request GET 'http://133.186.215.54:5001//chats/latest/20220910235700/number/4'
+```
+```
+#response example in statistic resource.
+{
+  "chats": [
+    {
+      "day": "20220910",
+      "time": "235645",
+      "direction": "BOT",
+      "utterance": "네, 좋은 밤 되세요."
+    },
+    {
+      "day": "20220910",
+      "time": "235640",
+      "direction": "USER",
+      "utterance": "내일 봐!"
+    },
+    {
+      "day": "20220908",
+      "time": "020030",
+      "direction": "BOT",
+      "utterance": "무슨 일이 있으신가요??"
+    },
+    {
+      "day": "20220908",
+      "time": "020022",
+      "direction": "USER",
+      "utterance": "나 우울해..."
+    }
+  ]
+}
+```
    
    
 ## DOCUMENTAION
