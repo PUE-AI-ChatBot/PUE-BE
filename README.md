@@ -18,6 +18,7 @@
 ## 🔨 Environments
 
 #### Language 
+<<<<<<< HEAD
 <img src="https://img.shields.io/badge/python-3.8.1-blue">
 
 #### Framework
@@ -27,6 +28,17 @@
 
 <img src="https://img.shields.io/badge/flask--restful-0.3.9-red"> <img src="https://img.shields.io/badge/flask--socketIO-5.3.0-brightgreen"> <img src="https://img.shields.io/badge/flask--SQLAlchemy-2.5.1-orange">
 <br/>
+=======
+<img src="https://img.shields.io/badge/python-3.8.1-blue?style=for-the-badge&logo=appveyor">
+
+#### Framework
+<img src="https://img.shields.io/badge/flask-2.1.2-black?style=for-the-badge&logo=appveyor">
+
+#### Library
+> * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)   
+<br>
+<img src="https://img.shields.io/badge/flask--restful-0.3.9-red?style=for-the-badge&logo=appveyor"> <img src="https://img.shields.io/badge/flask--socketIO-5.3.0-brightgreen?style=for-the-badge&logo=appveyor"> <img src="https://img.shields.io/badge/flask--SQLAlchemy-2.5.1-orange?style=for-the-badge&logo=appveyor">
+>>>>>>> 970c54cb57e1c660b01219880a0d5a35e81dda2e
 
 ### Communication
 
@@ -55,6 +67,7 @@
 
 ```
 
+<<<<<<< HEAD
 ## Environments
 
 ### Development
@@ -72,13 +85,20 @@
 <br>
 
 ## Project Settings
+=======
+## ⚙️ Project Settings
+>>>>>>> 970c54cb57e1c660b01219880a0d5a35e81dda2e
 
 > **Essential Required dependency's version**
 > ```
 > python >= 3.8.x
 > flask-socketio >= 5.x
 > ```
+<<<<<<< HEAD
 > * Check your socketio version compatibility in [**HERE**](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
+=======
+
+>>>>>>> 970c54cb57e1c660b01219880a0d5a35e81dda2e
 > 
 
 ### Install packages dependencies
@@ -108,7 +128,11 @@ sudo kill -9 <task-pid>
 ```
    
 
+<<<<<<< HEAD
 ## Auto Setup Feature
+=======
+## 📜 Auto Setup Feature
+>>>>>>> 970c54cb57e1c660b01219880a0d5a35e81dda2e
 > *PUE-AI* is implanted into this project as submodule.   
 > It has functions which will setup your environmental variables automatically.   
    
@@ -136,7 +160,11 @@ print("Environment Variable Set Successfully. root: %s" % (os.environ['CHATBOT_R
         gdown.download(loaded["EMO-index-url"], output, quiet=False)
 ```
 
+<<<<<<< HEAD
 ## Model and Resources description
+=======
+## 📜 Model and Resources description
+>>>>>>> 970c54cb57e1c660b01219880a0d5a35e81dda2e
 > **Detailed descripions are in our [WIKI](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).**
 
 ### DB Models
@@ -259,9 +287,26 @@ curl --location --request GET 'http://133.186.215.54:5001//chats/latest/20220910
 ```
    
    
+<<<<<<< HEAD
 ## DOCUMENTAION
 
 ***It might be worse***, if you're missing out our [**WIKI!**](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki).
    
 
 ## LICENSE
+=======
+## 📚 Documentations
+
+- [Branch Strategy](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki/Branch-Strategy)
+
+- [Git Convention](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki/Git-Convention)
+
+- [Coding Convention](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki/Coding-Convention)
+
+- [Workflow](https://github.com/PUE-AI-ChatBot/PUE-BE/wiki/Wokflow)
+
+
+## 🔒 LICENSE
+
+Preparing... 
+>>>>>>> 970c54cb57e1c660b01219880a0d5a35e81dda2e
