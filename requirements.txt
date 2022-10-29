@@ -21,5 +21,4 @@ seqeval
 tqdm
 eventlet
 sentence-transformers
-mecab
 konlpy
