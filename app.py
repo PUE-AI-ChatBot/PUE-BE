@@ -10,7 +10,7 @@ from configure import app
 from db import db
 
 host = "0.0.0.0"
-port = 5001
+port = 5000
 
 app.secret_key = "chan"
 db_name = "pue"
