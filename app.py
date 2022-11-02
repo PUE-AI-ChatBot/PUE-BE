@@ -52,6 +52,7 @@ api = Api(app) #API FLASK SERVER
 #CORS(app)
 
 sock = SocketIO(app,cors_allowed_origins="*")
+CORS(app)
 
 #this will be used for login(authenticate users)
 jwt = JWTManager(app) #this will make endpoint named '/auth' (username,password)

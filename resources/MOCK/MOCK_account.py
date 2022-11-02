@@ -7,8 +7,8 @@ def make_account():
         password="123123",
         make_date="20221020"
     )
-    user.num_of_userchats = 5
-    user.num_of_counselling = 1
+    user.num_of_userchats = 17
+    user.num_of_counselling = 10
     user.save_to_db()
 
     return user

@@ -6,8 +6,8 @@ from models.chat import ChatModel
 from models.statistic import StatisticModel
 from datetime import datetime
 from pytz import timezone
-import time,json
 import eventlet
+
 
 class ChatNamespace(Namespace):
     def on_connect(self):
@@ -34,16 +34,32 @@ class ChatNamespace(Namespace):
         chat.save_to_db()
 
         user = UserModel.find_by_id(self.user_id)
+        user.num_of_userchats += 1
 
 
-        now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
-        emit("RECEIVE_MESSAGE", {"response": processed_data["System_Corpus"],"day":now[:8],'time':now[8:]})
+        processed_data = main_ai.run("Chanee",data['message'])
 
-        chat = ChatModel(
-            user_id=user.id,
-            date_YMD=now[:8],
-            date_YMDHMS=now,
-            direction='BOT',
-            utterance=processed_data["System_Corpus"]
-        )
-        chat.save_to_db()
+        if processed_data["Emotion"]:
+           stat= StatisticModel(
+               user_id=user.id,
+               date_YMD=now[:8]
+           )
+           stat.save_to_db()
+
+        if processed_data["Flag"]:
+            user.num_of_counselling += 1
+
+        user.save_to_db()
+        print(processed_data)
+        for content in processed_data["System_Corpus"] :
+            eventlet.sleep(5)
+            now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
+            emit("RECEIVE_MESSAGE", {"response": content,"day":now[:8],'time':now[8:]})
+            chat = ChatModel(
+                user_id=user.id,
+                date_YMD=now[:8],
+                date_YMDHMS=now,
+                direction='BOT',
+                utterance=content
+            )
+            chat.save_to_db()

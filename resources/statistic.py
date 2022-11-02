@@ -12,7 +12,7 @@ class WeekEmotion(Resource):
         today = datetime.now().strftime('%Y%m%d')
 
         ret_emotions = init_emotion.copy()
-        stats = StatisticModel.find_by_number_with_user_id(user_id,today,7)
+        stats = StatisticModel.find_by_number_with_user_id(user_id,today,30)
 
         if not stats :
             return {
