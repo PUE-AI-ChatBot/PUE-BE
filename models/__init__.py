@@ -1,2 +1,4 @@
 from sqlalchemy import and_
-__all__ = ["chat", "statistic", "user"]
+from .user import UserModel
+from .chat import ChatModel
+from .statistic import StatisticModel

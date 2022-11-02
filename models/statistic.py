@@ -7,7 +7,7 @@ init_emotion={
 }
 
 class StatisticModel(db.Model):
-    __tablename__ = 'charts'
+    __tablename__ = 'statistics'
     id = db.Column(db.Integer, primary_key=True)
     date_YMD = db.Column(db.String(80))
     emotions = db.Column(db.String(80))
@@ -22,12 +22,15 @@ class StatisticModel(db.Model):
         self.user_id = user_id
 
     def json(self):
-        return {'date':self.date_YMD,
-                    'chart':{
-                        'total': self.total,
-                        'emotions': json.loads(self.emotions)
-                    }
-                }
+        emotions = json.loads(self.emotions)
+        return {
+            'date':self.date_YMD,
+            'top_emotion': max(emotions,key=emotions.get),
+            'chart':{
+                'total': self.total,
+                'emotions': emotions
+            }
+        }
 
     #1. day인 경우, month를 받으면 해당월에 관련된 모든 day 통계 표출
     #2. day인 경우, start와 end를 받으면 해당 기간에 관련된 모든 day 통계 표출

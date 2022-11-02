@@ -94,3 +94,17 @@ class UserLogin(Resource):
             }, 200
 
         return {"message": "Invalid Credentials!"}, 401
+
+class UserProfile(Resource):
+    def get(self):
+
+        user_id=1
+        user = UserModel.find_by_id(user_id)
+
+        return {
+            "subname":user.user_subname,
+            "makedate":user.make_date,
+            "chats":user.num_of_userchats,
+            "counsellings":user.num_of_counselling,
+        }
+

@@ -14,22 +14,23 @@ class UserModel(db.Model):
 
     provider = db.Column(db.String(80))
     pid = db.Column(db.String(80))
-    cursor = db.Column(db.String(80))
-    value_container = db.Column(db.String(80))
-    res_controller = db.Column(db.String(80))
+
+    make_date = db.Column(db.String(80))
+    num_of_userchats =  db.Column(db.Integer())
+    num_of_counselling = db.Column(db.Integer())
 
     chats = db.relationship('ChatModel', backref='users')
     statistics = db.relationship('StatisticModel', backref='users')
 
-    def __init__(self, user_subname,user_name="",password="",provider="",pid=""):
+    def __init__(self, user_subname,make_date,user_name="",password="",provider="",pid=""):
         self.user_subname = user_subname
+        self.make_date = make_date
         self.user_name = user_name
         self.password = password
         self.provider = provider
         self.pid = pid
-        self.value_container = json.dumps({"name": user_subname})
-        self.res_controller = None
-        self.cursor = None
+        self.num_of_userchats = 0
+        self.num_of_counselling = 0
 
     def json(self):
         return {
@@ -37,9 +38,9 @@ class UserModel(db.Model):
                 'id':self.id,
                 'user_name':self.user_name,
                 'user_subname':self.user_subname,
-                'provider':self.provider
-            },
-            "chats":[chat.json() for chat in self.chats]}
+                'provider':self.provider,
+            }
+        }
 
     def save_to_db(self):
         db.session.add(self)
@@ -58,5 +59,5 @@ class UserModel(db.Model):
         return cls.query.filter_by(id=_id).first()
 
     @classmethod
-    def find_oauth_by_id(cls, id,oauth):
-        return cls.query.filter(and_(cls.pid == id,cls.provider == oauth)).first()
+    def find_oauth_by_pid(cls, pid,oauth):
+        return cls.query.filter(and_(cls.pid == pid,cls.provider == oauth)).first()

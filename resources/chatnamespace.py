@@ -6,7 +6,6 @@ from models.chat import ChatModel
 from models.statistic import StatisticModel
 from datetime import datetime
 from pytz import timezone
-from .MOCK import mocks
 import time,json
 import eventlet
 
@@ -36,80 +35,15 @@ class ChatNamespace(Namespace):
 
         user = UserModel.find_by_id(self.user_id)
 
-        if user.cursor :
-            if self.scenario_processor(user,data['message']) :
-                user.value_container = json.dumps({'name':user.user_subname})
-        else :
-            processed_data = main_ai.run("Hello", data['message'])
 
-            if processed_data["Emotion"] not in ('중립','기쁨'):
-                stat = StatisticModel.find_by_dateYMD_with_user_id(self.user_id,now[8:])
-                if not stat :
-                    stat = StatisticModel(
-                        date_YMD=now[8:],
-                        user_id=user.id
-                    )
-                temp = json.loads(stat.emotions)
-                temp["슬픔"] += 1
-                stat.emotions = json.dumps(temp)
-                stat.total += 1
-                stat.save_to_db()
-            if processed_data["Emotion"] in ('걱정'):
-                user.cursor = '1'
-                user.save_to_db()
+        now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
+        emit("RECEIVE_MESSAGE", {"response": processed_data["System_Corpus"],"day":now[:8],'time':now[8:]})
 
-                self.scenario_processor(user,data['message'])
-            else :
-                now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
-                emit("RECEIVE_MESSAGE", {"response": processed_data["System_Corpus"],"day":now[:8],'time':now[8:]})
-                chat = ChatModel(
-                    user_id=user.id,
-                    date_YMD=now[:8],
-                    date_YMDHMS=now,
-                    direction='BOT',
-                    utterance=processed_data["System_Corpus"]
-                )
-                chat.save_to_db()
-
-    def scenario_processor(self,user, res):
-        data = mocks[user.cursor]
-        setups = data['setup']
-
-        value_container = json.loads(user.value_container)
-
-        if user.res_controller:
-            value_container[user.res_controller] = res
-
-        for text, keys in zip(data['text'], setups['keys']):
-            eventlet.sleep(setups['timer'])
-            now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
-            real_keys = [value_container[key] if (key in value_container.keys()) else key for key in keys]
-
-            emit("RECEIVE_MESSAGE", {"response": text.format(*real_keys), "day": now[:8], 'time': now[8:]})
-
-            chat = ChatModel(
-                user_id=user.id,
-                date_YMD=now[:8],
-                date_YMDHMS=now,
-                direction='BOT',
-                utterance=text.format(*real_keys)
-            )
-            chat.save_to_db()
-
-        if setups['is_response']:
-            res_setup = data['response']
-            if res_setup["is_store"]:
-                user.res_controller = res_setup['store_key']
-            else:
-                user.res_controller = None
-        else:
-            user.res_controller = None
-
-        user.cursor = setups['next']
-        user.value_container = json.dumps(value_container)
-        user.save_to_db()
-
-        if setups["is_last"]:
-            return False
-
-        return True
+        chat = ChatModel(
+            user_id=user.id,
+            date_YMD=now[:8],
+            date_YMDHMS=now,
+            direction='BOT',
+            utterance=processed_data["System_Corpus"]
+        )
+        chat.save_to_db()

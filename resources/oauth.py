@@ -1,31 +1,10 @@
-from flask_restful import Resource, reqparse, request
-from flask import redirect
+from flask_restful import Resource, reqparse
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token
 )
-import requests
-from urllib.parse import urlencode
-from configure import app
 from models.user import UserModel
-
-class GoogleOauth(Resource):
-    def get(self):
-        authorize_endpoint = app.config.get('GOOGLE_OAUTH_ENDPOINT')
-        client_id = app.config.get('GOOGLE_CLIENT_ID')
-        redirect_uri = app.config.get('GOOGLE_REDIRECT_URI')
-        response_type = "code"
-        scope = app.config.get("GOOGLE_SCOPES")
-
-        query_string = urlencode(dict(
-            redirect_uri=redirect_uri,
-            client_id=client_id,
-            scope=scope,
-            response_type=response_type
-        ))
-
-        authorize_redirect = f'{authorize_endpoint}?{query_string}'
-        return redirect(authorize_redirect)
+from datetime import datetime
 
 class GoogleLogin(Resource):
     _user_parser = reqparse.RequestParser()
@@ -56,7 +35,8 @@ class GoogleLogin(Resource):
                     user_subname=data['name'],
                     user_name=data['email'],
                     provider='google',
-                    pid=data['id']
+                    pid=data['id'],
+                    make_date=datetime.now().strftime("%Y%m%d")
                 )
                 user.save_to_db()
             else :
@@ -70,27 +50,6 @@ class GoogleLogin(Resource):
                    'refresh_token': refresh_token,
                    'user_id': user.id
                }, 200
-
-
-class KakaoOauth(Resource):
-
-    def get(self):
-        authorize_endpoint = app.config.get('KAKAO_OAUTH_ENDPOINT')
-        client_id = app.config.get('KAKAO_CLIENT_ID')
-        redirect_uri = app.config.get('KAKAO_REDIRECT_URI')
-        response_type = "code"
-        scope = app.config.get("KAKAO_SCOPES")
-
-        query_string = urlencode(dict(
-            redirect_uri=redirect_uri,
-            client_id=client_id,
-            response_type=response_type,
-            scope=scope
-        ))
-
-        authorize_redirect = f'{authorize_endpoint}?{query_string}'
-        return redirect(authorize_redirect)
-
 
 class KakaoLogin(Resource):
     _user_parser = reqparse.RequestParser()
@@ -112,7 +71,7 @@ class KakaoLogin(Resource):
 
     def post(self):
         data = KakaoLogin._user_parser.parse_args()
-        user = UserModel.find_oauth_by_id(data['id'], 'kakao')
+        user = UserModel.find_oauth_by_pid(data['id'], 'kakao')
 
         if not user:
             user = UserModel.find_by_username(data['email'])
