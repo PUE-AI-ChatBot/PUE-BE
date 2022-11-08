@@ -10,10 +10,9 @@ def make_stats(user):
     temp = json.loads(stat.emotions)
     temp["걱정"] += 2
     temp["불만"] += 1
-    temp["연민"] += 2
     temp["질투"] += 1
     stat.emotions = json.dumps(temp)
-    stat.total += 6
+    stat.total += 4
 
     stat.save_to_db()
 
@@ -24,10 +23,9 @@ def make_stats(user):
     temp = json.loads(stat.emotions)
     temp["중립"] += 3
     temp["기쁨"] += 2
-    temp["죄책감"] += 4
     temp["당혹"] += 1
     stat.emotions = json.dumps(temp)
-    stat.total += 10
+    stat.total += 6
 
     stat.save_to_db()
 
@@ -51,9 +49,8 @@ def make_stats(user):
     temp = json.loads(stat.emotions)
     temp["슬픔"] += 1
     temp["불만"] += 2
-    temp["연민"] += 1
     stat.emotions = json.dumps(temp)
-    stat.total +=4
+    stat.total +=3
 
     stat.save_to_db()
 
@@ -76,12 +73,11 @@ def make_stats(user):
         user_id=user.id
     )
     temp = json.loads(stat.emotions)
-    temp["죄책감"] += 1
     temp["기쁨"] += 2
     temp["중립"] += 3
     temp["걱정"] += 1
     stat.emotions = json.dumps(temp)
-    stat.total += 7
+    stat.total += 6
 
     stat.save_to_db()
 
@@ -95,7 +91,7 @@ def make_stats(user):
     temp["불만"] += 4
     temp["당혹"] += 1
     stat.emotions = json.dumps(temp)
-    stat.total += 1
+    stat.total += 10
 
     stat.save_to_db()
 
@@ -104,11 +100,10 @@ def make_stats(user):
         user_id=user.id
     )
     temp = json.loads(stat.emotions)
-    temp["죄책감"] += 1
     temp["기쁨"] += 2
     temp["중립"] += 3
     temp["걱정"] += 1
     stat.emotions = json.dumps(temp)
-    stat.total += 7
+    stat.total += 6
 
     stat.save_to_db()
