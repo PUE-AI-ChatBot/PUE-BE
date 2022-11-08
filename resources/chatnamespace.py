@@ -52,7 +52,8 @@ class ChatNamespace(Namespace):
 
         user.save_to_db()
         print(processed_data)
-        eventlet.sleep(1)
+        if not processed_data["Type"] == 'General':
+            eventlet.sleep(1)
         for content in processed_data["System_Corpus"] :
             now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
             emit("RECEIVE_MESSAGE", {"response": content,"day":now[:8],'time':now[8:]})

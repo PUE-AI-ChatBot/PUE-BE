@@ -6,6 +6,6 @@ class MakeMock(Resource):
 
         user = make_account()
         make_stats(user)
-        make_chats(user)
+        #make_chats(user)
 
         return {"message":"OK"},200
