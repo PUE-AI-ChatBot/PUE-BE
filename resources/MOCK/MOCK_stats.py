@@ -4,7 +4,7 @@ import json
 def make_stats(user):
 
     stat = StatisticModel(
-        date_YMD="20221102",
+        date_YMD="20221108",
         user_id=user.id
     )
     temp = json.loads(stat.emotions)
@@ -18,7 +18,7 @@ def make_stats(user):
     stat.save_to_db()
 
     stat = StatisticModel(
-        date_YMD="20221101",
+        date_YMD="20221107",
         user_id=user.id
     )
     temp = json.loads(stat.emotions)
@@ -32,7 +32,7 @@ def make_stats(user):
     stat.save_to_db()
 
     stat = StatisticModel(
-        date_YMD="20221031",
+        date_YMD="20221106",
         user_id=user.id
     )
     temp = json.loads(stat.emotions)
@@ -44,7 +44,7 @@ def make_stats(user):
     stat.save_to_db()
 
     stat = StatisticModel(
-        date_YMD="20221030",
+        date_YMD="20221105",
         user_id=user.id
     )
 
@@ -58,7 +58,7 @@ def make_stats(user):
     stat.save_to_db()
 
     stat = StatisticModel(
-        date_YMD="20221029",
+        date_YMD="20221104",
         user_id=user.id
     )
     temp = json.loads(stat.emotions)
@@ -72,7 +72,7 @@ def make_stats(user):
     stat.save_to_db()
 
     stat = StatisticModel(
-        date_YMD="20221028",
+        date_YMD="20221103",
         user_id=user.id
     )
     temp = json.loads(stat.emotions)
@@ -86,7 +86,7 @@ def make_stats(user):
     stat.save_to_db()
 
     stat = StatisticModel(
-        date_YMD="20221027",
+        date_YMD="20221102",
         user_id=user.id
     )
     temp = json.loads(stat.emotions)
@@ -100,7 +100,7 @@ def make_stats(user):
     stat.save_to_db()
 
     stat = StatisticModel(
-        date_YMD="20221026",
+        date_YMD="20221101",
         user_id=user.id
     )
     temp = json.loads(stat.emotions)

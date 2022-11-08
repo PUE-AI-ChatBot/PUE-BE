@@ -13,6 +13,7 @@ class ChatNamespace(Namespace):
     def on_connect(self):
         print("Client connected")
         self.user_id = 1
+        main_ai.set_init()
 
     def on_disconnect(self):
         print("Client disconnected")
@@ -51,8 +52,8 @@ class ChatNamespace(Namespace):
 
         user.save_to_db()
         print(processed_data)
+        eventlet.sleep(2)
         for content in processed_data["System_Corpus"] :
-            eventlet.sleep(5)
             now = datetime.now(timezone('Asia/Seoul')).strftime("%Y%m%d%H%M%S")
             emit("RECEIVE_MESSAGE", {"response": content,"day":now[:8],'time':now[8:]})
             chat = ChatModel(
@@ -63,3 +64,5 @@ class ChatNamespace(Namespace):
                 utterance=content
             )
             chat.save_to_db()
+            eventlet.sleep(3)
+

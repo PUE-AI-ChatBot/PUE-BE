@@ -1,6 +1,9 @@
 from packages.pue_AI.aimodel import AIModel
 
 main_ai = AIModel()
+print("#####생성자 테스트#####")
+processed_data = main_ai.run("생성자","테스트")
+print("#####테스트 완료(Ready to go)#####")
 
 def create_api(api):
     from .user import UserRegister, User, UserLogin, UserProfile
